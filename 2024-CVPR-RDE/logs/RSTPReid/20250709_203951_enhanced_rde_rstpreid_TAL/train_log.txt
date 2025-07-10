@@ -1,0 +1,1953 @@
+2025-07-09 20:39:51,351 RDE INFO: Using 1 GPUs
+2025-07-09 20:39:51,352 RDE INFO: Namespace(MLM=True
+ alpha=0.9
+ batch_size=64
+ beta=0.999
+ bias_lr_factor=2.0
+ ccl_temperature=0.07
+ cmt_depth=4
+ confidence_threshold=0.7
+ cost_hidden_dim=128
+ dataset_name='RSTPReid'
+ distributed=False
+ eval_period=1
+ evidence_reg=0.1
+ gamma=0.1
+ img_aug=True
+ img_size=(384
+ 128)
+ local_rank=0
+ log_period=100
+ loss_names='TAL'
+ lr=1e-05
+ lr_factor=5.0
+ lrscheduler='cosine'
+ margin=0.1
+ masked_token_rate=0.8
+ masked_token_unchanged_rate=0.1
+ milestones=(20
+ 50)
+ momentum=0.9
+ name='enhanced_rde_rstpreid'
+ noisy_file=''
+ noisy_rate=0.2
+ num_epoch=80
+ num_evidence_views=4
+ num_instance=4
+ num_workers=8
+ optimizer='Adam'
+ ot_max_iter=100
+ ot_reg=0.1
+ output_dir='logs/RSTPReid/20250709_203951_enhanced_rde_rstpreid_TAL'
+ power=0.9
+ pretrain_choice='ViT-B/16'
+ progressive_epochs=50
+ push_phase_epochs=15
+ rematch_temperature=0.07
+ resume=False
+ resume_ckpt_file=''
+ root_dir='/root/work/RDE-main/2024-CVPR-RDE/datasets'
+ sampler='random'
+ select_ratio=0.3
+ stride_size=16
+ target_lr=0
+ tau=0.015
+ temperature=0.02
+ test_batch_size=512
+ text_length=77
+ training=True
+ transition_epochs=5
+ txt_aug=False
+ uncertainty_epochs=10
+ uncertainty_threshold=0.5
+ val_dataset='test'
+ vocab_size=49408
+ warmup_epochs=5
+ warmup_factor=0.1
+ warmup_method='linear'
+ weight_decay=4e-05
+ weight_decay_bias=0.0)
+2025-07-09 20:39:51,563 RDE.dataset INFO: => RSTPReid Images and Captions are loaded
+2025-07-09 20:39:51,564 RDE.dataset INFO: RSTPReid Dataset statistics:
+2025-07-09 20:39:51,564 RDE.dataset INFO: 
++--------+------+--------+----------+
+| subset | ids  | images | captions |
++--------+------+--------+----------+
+| train  | 3701 | 18505  |  37010   |
+|  test  | 200  |  1000  |   2000   |
+|  val   | 200  |  1000  |   2000   |
++--------+------+--------+----------+
+2025-07-09 20:39:51,612 RDE.dataset INFO: [1, 1, 0, 0, 1, 1, 1, 1, 0, 1]
+2025-07-09 20:39:51,618 RDE.dataset INFO: =>Noisy rate: 0.2,  clean pairs: 29610, noisy pairs: 7400, total pairs: 37010
+2025-07-09 20:39:56,343 RDE INFO: Total params: 153M
+2025-07-09 20:40:02,056 RDE.train INFO: start training
+2025-07-09 20:40:03,828 RDE.train INFO: compute loss batch 0
+2025-07-09 20:40:35,260 RDE.train INFO: compute loss batch 100
+2025-07-09 20:41:06,648 RDE.train INFO: compute loss batch 200
+2025-07-09 20:41:38,238 RDE.train INFO: compute loss batch 300
+2025-07-09 20:42:09,848 RDE.train INFO: compute loss batch 400
+2025-07-09 20:42:41,445 RDE.train INFO: compute loss batch 500
+2025-07-09 20:43:06,024 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 20:44:38,365 RDE.train INFO: Epoch[1] Iteration[100/579], loss: 26.2788, bge_loss: 12.3124, tse_loss: 13.9664, Base Lr: 1.00e-06
+2025-07-09 20:46:08,287 RDE.train INFO: Epoch[1] Iteration[200/579], loss: 25.3477, bge_loss: 11.8550, tse_loss: 13.4928, Base Lr: 1.00e-06
+2025-07-09 20:47:38,472 RDE.train INFO: Epoch[1] Iteration[300/579], loss: 24.7959, bge_loss: 11.6526, tse_loss: 13.1433, Base Lr: 1.00e-06
+2025-07-09 20:49:08,243 RDE.train INFO: Epoch[1] Iteration[400/579], loss: 24.3849, bge_loss: 11.5247, tse_loss: 12.8602, Base Lr: 1.00e-06
+2025-07-09 20:50:37,991 RDE.train INFO: Epoch[1] Iteration[500/579], loss: 23.9725, bge_loss: 11.3870, tse_loss: 12.5855, Base Lr: 1.00e-06
+2025-07-09 20:51:48,527 RDE.train INFO: Epoch 1 done. Time per batch: 1.220[s] Speed: 52.5[samples/s]
+2025-07-09 20:51:48,527 RDE.train INFO: Validation Results - Epoch: 1
+2025-07-09 20:52:05,660 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 47.30 | 72.30 | 82.50 | 37.15 | 17.46 | 202.09999 |
+|   TSE-t2i   | 40.85 | 68.65 | 78.80 | 33.17 | 15.36 | 188.29999 |
+| BGE+TSE-t2i | 52.15 | 75.30 | 84.25 | 40.13 | 19.84 |   211.7   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-09 20:52:11,707 RDE.train INFO: compute loss batch 0
+2025-07-09 20:52:43,536 RDE.train INFO: compute loss batch 100
+2025-07-09 20:53:15,339 RDE.train INFO: compute loss batch 200
+2025-07-09 20:53:47,132 RDE.train INFO: compute loss batch 300
+2025-07-09 20:54:18,916 RDE.train INFO: compute loss batch 400
+2025-07-09 20:54:50,765 RDE.train INFO: compute loss batch 500
+2025-07-09 20:55:15,500 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 20:56:47,559 RDE.train INFO: Epoch[2] Iteration[100/579], loss: 20.1041, bge_loss: 9.7359, tse_loss: 10.3682, Base Lr: 2.80e-06
+2025-07-09 20:58:17,496 RDE.train INFO: Epoch[2] Iteration[200/579], loss: 19.5414, bge_loss: 9.5146, tse_loss: 10.0267, Base Lr: 2.80e-06
+2025-07-09 20:59:47,339 RDE.train INFO: Epoch[2] Iteration[300/579], loss: 18.9502, bge_loss: 9.2951, tse_loss: 9.6551, Base Lr: 2.80e-06
+2025-07-09 21:01:17,315 RDE.train INFO: Epoch[2] Iteration[400/579], loss: 18.5195, bge_loss: 9.1156, tse_loss: 9.4039, Base Lr: 2.80e-06
+2025-07-09 21:02:47,325 RDE.train INFO: Epoch[2] Iteration[500/579], loss: 18.1010, bge_loss: 8.9339, tse_loss: 9.1671, Base Lr: 2.80e-06
+2025-07-09 21:03:57,974 RDE.train INFO: Epoch 2 done. Time per batch: 1.225[s] Speed: 52.2[samples/s]
+2025-07-09 21:03:57,974 RDE.train INFO: Validation Results - Epoch: 2
+2025-07-09 21:04:15,489 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 56.50 | 78.30 | 86.90 | 44.00 | 22.40 | 221.70001 |
+|   TSE-t2i   | 56.60 | 78.95 | 86.75 | 44.14 | 23.44 | 222.29999 |
+| BGE+TSE-t2i | 59.40 | 82.05 | 87.95 | 46.75 | 24.81 |   229.4   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-09 21:04:30,712 RDE.train INFO: compute loss batch 0
+2025-07-09 21:05:02,510 RDE.train INFO: compute loss batch 100
+2025-07-09 21:05:34,354 RDE.train INFO: compute loss batch 200
+2025-07-09 21:06:06,083 RDE.train INFO: compute loss batch 300
+2025-07-09 21:06:37,998 RDE.train INFO: compute loss batch 400
+2025-07-09 21:07:09,905 RDE.train INFO: compute loss batch 500
+2025-07-09 21:07:34,648 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 21:09:06,862 RDE.train INFO: Epoch[3] Iteration[100/579], loss: 9.6532, bge_loss: 4.8882, tse_loss: 4.7651, Base Lr: 4.60e-06
+2025-07-09 21:10:36,732 RDE.train INFO: Epoch[3] Iteration[200/579], loss: 9.7546, bge_loss: 4.9131, tse_loss: 4.8414, Base Lr: 4.60e-06
+2025-07-09 21:12:06,704 RDE.train INFO: Epoch[3] Iteration[300/579], loss: 9.6786, bge_loss: 4.8650, tse_loss: 4.8136, Base Lr: 4.60e-06
+2025-07-09 21:13:36,773 RDE.train INFO: Epoch[3] Iteration[400/579], loss: 9.5375, bge_loss: 4.7792, tse_loss: 4.7583, Base Lr: 4.60e-06
+2025-07-09 21:15:06,690 RDE.train INFO: Epoch[3] Iteration[500/579], loss: 9.4551, bge_loss: 4.7365, tse_loss: 4.7186, Base Lr: 4.60e-06
+2025-07-09 21:16:17,334 RDE.train INFO: Epoch 3 done. Time per batch: 1.226[s] Speed: 52.2[samples/s]
+2025-07-09 21:16:17,334 RDE.train INFO: Validation Results - Epoch: 3
+2025-07-09 21:16:35,076 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 58.90 | 80.25 | 87.70 | 45.39 | 23.44 | 226.84999 |
+|   TSE-t2i   | 56.35 | 79.75 | 87.50 | 45.16 | 24.46 |   223.6   |
+| BGE+TSE-t2i | 61.60 | 82.00 | 88.50 | 47.71 | 25.68 |   232.1   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-09 21:16:50,099 RDE.train INFO: compute loss batch 0
+2025-07-09 21:17:21,872 RDE.train INFO: compute loss batch 100
+2025-07-09 21:17:53,676 RDE.train INFO: compute loss batch 200
+2025-07-09 21:18:25,522 RDE.train INFO: compute loss batch 300
+2025-07-09 21:18:57,370 RDE.train INFO: compute loss batch 400
+2025-07-09 21:19:29,195 RDE.train INFO: compute loss batch 500
+2025-07-09 21:19:53,937 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 21:21:26,430 RDE.train INFO: Epoch[4] Iteration[100/579], loss: 1.0477, bge_loss: 0.5179, tse_loss: 0.5298, Base Lr: 6.40e-06
+2025-07-09 21:22:56,359 RDE.train INFO: Epoch[4] Iteration[200/579], loss: 1.1150, bge_loss: 0.5504, tse_loss: 0.5646, Base Lr: 6.40e-06
+2025-07-09 21:24:26,269 RDE.train INFO: Epoch[4] Iteration[300/579], loss: 1.1270, bge_loss: 0.5565, tse_loss: 0.5705, Base Lr: 6.40e-06
+2025-07-09 21:25:56,242 RDE.train INFO: Epoch[4] Iteration[400/579], loss: 1.1234, bge_loss: 0.5580, tse_loss: 0.5654, Base Lr: 6.40e-06
+2025-07-09 21:27:26,416 RDE.train INFO: Epoch[4] Iteration[500/579], loss: 1.1312, bge_loss: 0.5657, tse_loss: 0.5655, Base Lr: 6.40e-06
+2025-07-09 21:28:37,168 RDE.train INFO: Epoch 4 done. Time per batch: 1.226[s] Speed: 52.2[samples/s]
+2025-07-09 21:28:37,168 RDE.train INFO: Validation Results - Epoch: 4
+2025-07-09 21:28:55,121 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 57.60 | 80.20 | 87.05 | 44.02 | 22.19 | 224.84999 |
+|   TSE-t2i   | 59.65 | 80.05 | 87.30 | 45.57 | 23.32 |   227.0   |
+| BGE+TSE-t2i | 61.15 | 82.15 | 88.40 | 47.24 | 24.46 | 231.70001 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-09 21:28:58,121 RDE.train INFO: compute loss batch 0
+2025-07-09 21:29:30,082 RDE.train INFO: compute loss batch 100
+2025-07-09 21:30:01,975 RDE.train INFO: compute loss batch 200
+2025-07-09 21:30:33,882 RDE.train INFO: compute loss batch 300
+2025-07-09 21:31:05,801 RDE.train INFO: compute loss batch 400
+2025-07-09 21:31:37,691 RDE.train INFO: compute loss batch 500
+2025-07-09 21:32:02,394 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 21:33:34,699 RDE.train INFO: Epoch[5] Iteration[100/579], loss: 1.3566, bge_loss: 0.6856, tse_loss: 0.6710, Base Lr: 8.20e-06
+2025-07-09 21:35:04,569 RDE.train INFO: Epoch[5] Iteration[200/579], loss: 1.3932, bge_loss: 0.6969, tse_loss: 0.6963, Base Lr: 8.20e-06
+2025-07-09 21:36:34,520 RDE.train INFO: Epoch[5] Iteration[300/579], loss: 1.4406, bge_loss: 0.7161, tse_loss: 0.7244, Base Lr: 8.20e-06
+2025-07-09 21:38:04,422 RDE.train INFO: Epoch[5] Iteration[400/579], loss: 1.4628, bge_loss: 0.7224, tse_loss: 0.7404, Base Lr: 8.20e-06
+2025-07-09 21:39:34,372 RDE.train INFO: Epoch[5] Iteration[500/579], loss: 1.5003, bge_loss: 0.7360, tse_loss: 0.7644, Base Lr: 8.20e-06
+2025-07-09 21:40:44,926 RDE.train INFO: Epoch 5 done. Time per batch: 1.226[s] Speed: 52.2[samples/s]
+2025-07-09 21:40:44,927 RDE.train INFO: Validation Results - Epoch: 5
+2025-07-09 21:41:02,565 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 56.10 | 79.35 | 86.80 | 43.39 | 22.12 | 222.25 |
+|   TSE-t2i   | 57.30 | 79.45 | 86.70 | 44.13 | 22.77 | 223.45 |
+| BGE+TSE-t2i | 59.80 | 81.55 | 87.50 | 46.04 | 23.95 | 228.85 |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-09 21:41:05,595 RDE.train INFO: compute loss batch 0
+2025-07-09 21:41:37,310 RDE.train INFO: compute loss batch 100
+2025-07-09 21:42:09,062 RDE.train INFO: compute loss batch 200
+2025-07-09 21:42:40,780 RDE.train INFO: compute loss batch 300
+2025-07-09 21:43:12,486 RDE.train INFO: compute loss batch 400
+2025-07-09 21:43:44,192 RDE.train INFO: compute loss batch 500
+2025-07-09 21:44:08,891 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 21:45:41,369 RDE.train INFO: Epoch[6] Iteration[100/579], loss: 1.1938, bge_loss: 0.5567, tse_loss: 0.6371, Base Lr: 1.00e-05
+2025-07-09 21:47:11,192 RDE.train INFO: Epoch[6] Iteration[200/579], loss: 1.2665, bge_loss: 0.5995, tse_loss: 0.6670, Base Lr: 1.00e-05
+2025-07-09 21:48:41,067 RDE.train INFO: Epoch[6] Iteration[300/579], loss: 1.3009, bge_loss: 0.6231, tse_loss: 0.6778, Base Lr: 1.00e-05
+2025-07-09 21:50:10,999 RDE.train INFO: Epoch[6] Iteration[400/579], loss: 1.3320, bge_loss: 0.6411, tse_loss: 0.6909, Base Lr: 1.00e-05
+2025-07-09 21:51:40,863 RDE.train INFO: Epoch[6] Iteration[500/579], loss: 1.3665, bge_loss: 0.6532, tse_loss: 0.7133, Base Lr: 1.00e-05
+2025-07-09 21:52:51,441 RDE.train INFO: Epoch 6 done. Time per batch: 1.224[s] Speed: 52.3[samples/s]
+2025-07-09 21:52:51,442 RDE.train INFO: Validation Results - Epoch: 6
+2025-07-09 21:53:08,697 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.10 | 78.25 | 85.90 | 42.72 | 21.52 |   219.25  |
+|   TSE-t2i   | 55.55 | 77.10 | 84.45 | 42.60 | 21.25 | 217.09999 |
+| BGE+TSE-t2i | 59.20 | 79.30 | 86.10 | 45.05 | 22.99 |   224.6   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-09 21:53:11,736 RDE.train INFO: compute loss batch 0
+2025-07-09 21:53:43,557 RDE.train INFO: compute loss batch 100
+2025-07-09 21:54:15,321 RDE.train INFO: compute loss batch 200
+2025-07-09 21:54:47,069 RDE.train INFO: compute loss batch 300
+2025-07-09 21:55:18,789 RDE.train INFO: compute loss batch 400
+2025-07-09 21:55:50,541 RDE.train INFO: compute loss batch 500
+2025-07-09 21:56:15,254 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 21:57:47,526 RDE.train INFO: Epoch[7] Iteration[100/579], loss: 1.3035, bge_loss: 0.6371, tse_loss: 0.6663, Base Lr: 1.00e-05
+2025-07-09 21:59:17,408 RDE.train INFO: Epoch[7] Iteration[200/579], loss: 1.3114, bge_loss: 0.6321, tse_loss: 0.6793, Base Lr: 1.00e-05
+2025-07-09 22:00:47,452 RDE.train INFO: Epoch[7] Iteration[300/579], loss: 1.3584, bge_loss: 0.6508, tse_loss: 0.7076, Base Lr: 1.00e-05
+2025-07-09 22:02:17,304 RDE.train INFO: Epoch[7] Iteration[400/579], loss: 1.3855, bge_loss: 0.6594, tse_loss: 0.7261, Base Lr: 1.00e-05
+2025-07-09 22:03:47,390 RDE.train INFO: Epoch[7] Iteration[500/579], loss: 1.4064, bge_loss: 0.6716, tse_loss: 0.7348, Base Lr: 1.00e-05
+2025-07-09 22:04:58,187 RDE.train INFO: Epoch 7 done. Time per batch: 1.225[s] Speed: 52.2[samples/s]
+2025-07-09 22:04:58,188 RDE.train INFO: Validation Results - Epoch: 7
+2025-07-09 22:05:15,572 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 56.05 | 78.75 | 86.20 | 42.69 | 21.53 |   221.0   |
+|   TSE-t2i   | 55.00 | 78.55 | 86.00 | 42.18 | 20.87 | 219.54999 |
+| BGE+TSE-t2i | 59.05 | 79.05 | 87.20 | 44.41 | 22.60 | 225.29999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-09 22:05:19,478 RDE.train INFO: compute loss batch 0
+2025-07-09 22:05:51,344 RDE.train INFO: compute loss batch 100
+2025-07-09 22:06:23,117 RDE.train INFO: compute loss batch 200
+2025-07-09 22:06:54,826 RDE.train INFO: compute loss batch 300
+2025-07-09 22:07:26,631 RDE.train INFO: compute loss batch 400
+2025-07-09 22:07:58,351 RDE.train INFO: compute loss batch 500
+2025-07-09 22:08:23,139 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 22:09:55,650 RDE.train INFO: Epoch[8] Iteration[100/579], loss: 1.2049, bge_loss: 0.5746, tse_loss: 0.6302, Base Lr: 9.98e-06
+2025-07-09 22:11:25,609 RDE.train INFO: Epoch[8] Iteration[200/579], loss: 1.3053, bge_loss: 0.6242, tse_loss: 0.6811, Base Lr: 9.98e-06
+2025-07-09 22:12:55,671 RDE.train INFO: Epoch[8] Iteration[300/579], loss: 1.2895, bge_loss: 0.6157, tse_loss: 0.6738, Base Lr: 9.98e-06
+2025-07-09 22:14:25,722 RDE.train INFO: Epoch[8] Iteration[400/579], loss: 1.3260, bge_loss: 0.6294, tse_loss: 0.6966, Base Lr: 9.98e-06
+2025-07-09 22:15:55,778 RDE.train INFO: Epoch[8] Iteration[500/579], loss: 1.3158, bge_loss: 0.6252, tse_loss: 0.6906, Base Lr: 9.98e-06
+2025-07-09 22:17:06,503 RDE.train INFO: Epoch 8 done. Time per batch: 1.228[s] Speed: 52.1[samples/s]
+2025-07-09 22:17:06,504 RDE.train INFO: Validation Results - Epoch: 8
+2025-07-09 22:17:24,192 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.05 | 76.50 | 84.65 | 41.16 | 19.99 | 216.20001 |
+|   TSE-t2i   | 54.70 | 77.95 | 85.25 | 41.37 | 19.24 |   217.9   |
+| BGE+TSE-t2i | 58.00 | 78.35 | 86.30 | 43.43 | 21.05 |   222.65  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-09 22:17:27,335 RDE.train INFO: compute loss batch 0
+2025-07-09 22:17:59,127 RDE.train INFO: compute loss batch 100
+2025-07-09 22:18:31,029 RDE.train INFO: compute loss batch 200
+2025-07-09 22:19:02,922 RDE.train INFO: compute loss batch 300
+2025-07-09 22:19:34,853 RDE.train INFO: compute loss batch 400
+2025-07-09 22:20:06,742 RDE.train INFO: compute loss batch 500
+2025-07-09 22:20:31,504 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 22:22:03,836 RDE.train INFO: Epoch[9] Iteration[100/579], loss: 1.1416, bge_loss: 0.5347, tse_loss: 0.6068, Base Lr: 9.96e-06
+2025-07-09 22:23:33,793 RDE.train INFO: Epoch[9] Iteration[200/579], loss: 1.1179, bge_loss: 0.5233, tse_loss: 0.5946, Base Lr: 9.96e-06
+2025-07-09 22:25:03,746 RDE.train INFO: Epoch[9] Iteration[300/579], loss: 1.1220, bge_loss: 0.5274, tse_loss: 0.5946, Base Lr: 9.96e-06
+2025-07-09 22:26:33,792 RDE.train INFO: Epoch[9] Iteration[400/579], loss: 1.1232, bge_loss: 0.5274, tse_loss: 0.5957, Base Lr: 9.96e-06
+2025-07-09 22:28:03,719 RDE.train INFO: Epoch[9] Iteration[500/579], loss: 1.1423, bge_loss: 0.5379, tse_loss: 0.6044, Base Lr: 9.96e-06
+2025-07-09 22:29:14,384 RDE.train INFO: Epoch 9 done. Time per batch: 1.226[s] Speed: 52.2[samples/s]
+2025-07-09 22:29:14,384 RDE.train INFO: Validation Results - Epoch: 9
+2025-07-09 22:29:31,870 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 57.00 | 78.45 | 86.45 | 41.91 | 20.05 |   221.9   |
+|   TSE-t2i   | 54.90 | 77.10 | 84.60 | 41.59 | 20.90 |   216.6   |
+| BGE+TSE-t2i | 58.20 | 79.75 | 86.85 | 43.68 | 22.06 | 224.79999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-09 22:29:34,994 RDE.train INFO: compute loss batch 0
+2025-07-09 22:30:06,637 RDE.train INFO: compute loss batch 100
+2025-07-09 22:30:38,414 RDE.train INFO: compute loss batch 200
+2025-07-09 22:31:10,236 RDE.train INFO: compute loss batch 300
+2025-07-09 22:31:42,133 RDE.train INFO: compute loss batch 400
+2025-07-09 22:32:14,095 RDE.train INFO: compute loss batch 500
+2025-07-09 22:32:38,961 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 22:34:11,259 RDE.train INFO: Epoch[10] Iteration[100/579], loss: 1.2352, bge_loss: 0.5925, tse_loss: 0.6427, Base Lr: 9.93e-06
+2025-07-09 22:35:41,291 RDE.train INFO: Epoch[10] Iteration[200/579], loss: 1.3061, bge_loss: 0.6179, tse_loss: 0.6882, Base Lr: 9.93e-06
+2025-07-09 22:37:11,361 RDE.train INFO: Epoch[10] Iteration[300/579], loss: 1.2810, bge_loss: 0.6037, tse_loss: 0.6773, Base Lr: 9.93e-06
+2025-07-09 22:38:41,343 RDE.train INFO: Epoch[10] Iteration[400/579], loss: 1.2438, bge_loss: 0.5842, tse_loss: 0.6596, Base Lr: 9.93e-06
+2025-07-09 22:40:11,276 RDE.train INFO: Epoch[10] Iteration[500/579], loss: 1.2870, bge_loss: 0.6048, tse_loss: 0.6822, Base Lr: 9.93e-06
+2025-07-09 22:41:21,936 RDE.train INFO: Epoch 10 done. Time per batch: 1.226[s] Speed: 52.2[samples/s]
+2025-07-09 22:41:21,937 RDE.train INFO: Validation Results - Epoch: 10
+2025-07-09 22:41:39,345 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.35 | 78.25 | 85.60 | 41.36 | 20.26 | 218.20001 |
+|   TSE-t2i   | 56.25 | 78.55 | 85.50 | 42.18 | 20.05 | 220.29999 |
+| BGE+TSE-t2i | 57.85 | 79.85 | 86.20 | 43.83 | 21.54 |   223.9   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-09 22:41:42,494 RDE.train INFO: compute loss batch 0
+2025-07-09 22:42:14,272 RDE.train INFO: compute loss batch 100
+2025-07-09 22:42:46,002 RDE.train INFO: compute loss batch 200
+2025-07-09 22:43:17,847 RDE.train INFO: compute loss batch 300
+2025-07-09 22:43:49,637 RDE.train INFO: compute loss batch 400
+2025-07-09 22:44:21,519 RDE.train INFO: compute loss batch 500
+2025-07-09 22:44:46,389 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 22:46:18,751 RDE.train INFO: Epoch[11] Iteration[100/579], loss: 1.1005, bge_loss: 0.5034, tse_loss: 0.5971, Base Lr: 9.89e-06
+2025-07-09 22:47:48,774 RDE.train INFO: Epoch[11] Iteration[200/579], loss: 1.1996, bge_loss: 0.5452, tse_loss: 0.6545, Base Lr: 9.89e-06
+2025-07-09 22:49:18,736 RDE.train INFO: Epoch[11] Iteration[300/579], loss: 1.2606, bge_loss: 0.5740, tse_loss: 0.6867, Base Lr: 9.89e-06
+2025-07-09 22:50:48,632 RDE.train INFO: Epoch[11] Iteration[400/579], loss: 1.2859, bge_loss: 0.5886, tse_loss: 0.6973, Base Lr: 9.89e-06
+2025-07-09 22:52:18,647 RDE.train INFO: Epoch[11] Iteration[500/579], loss: 1.3176, bge_loss: 0.6052, tse_loss: 0.7124, Base Lr: 9.89e-06
+2025-07-09 22:53:29,462 RDE.train INFO: Epoch 11 done. Time per batch: 1.226[s] Speed: 52.2[samples/s]
+2025-07-09 22:53:29,462 RDE.train INFO: Validation Results - Epoch: 11
+2025-07-09 22:53:46,914 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.90 | 77.95 | 85.35 | 42.94 | 22.01 | 219.20001 |
+|   TSE-t2i   | 55.70 | 78.70 | 86.05 | 42.18 | 20.41 | 220.44998 |
+| BGE+TSE-t2i | 58.60 | 79.25 | 86.70 | 44.49 | 22.52 |   224.55  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-09 22:53:50,019 RDE.train INFO: compute loss batch 0
+2025-07-09 22:54:21,824 RDE.train INFO: compute loss batch 100
+2025-07-09 22:54:53,631 RDE.train INFO: compute loss batch 200
+2025-07-09 22:55:25,374 RDE.train INFO: compute loss batch 300
+2025-07-09 22:55:57,275 RDE.train INFO: compute loss batch 400
+2025-07-09 22:56:29,148 RDE.train INFO: compute loss batch 500
+2025-07-09 22:56:53,994 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 22:58:26,242 RDE.train INFO: Epoch[12] Iteration[100/579], loss: 1.0547, bge_loss: 0.4950, tse_loss: 0.5596, Base Lr: 9.84e-06
+2025-07-09 22:59:56,052 RDE.train INFO: Epoch[12] Iteration[200/579], loss: 1.2297, bge_loss: 0.5768, tse_loss: 0.6529, Base Lr: 9.84e-06
+2025-07-09 23:01:25,914 RDE.train INFO: Epoch[12] Iteration[300/579], loss: 1.2607, bge_loss: 0.5934, tse_loss: 0.6674, Base Lr: 9.84e-06
+2025-07-09 23:02:55,954 RDE.train INFO: Epoch[12] Iteration[400/579], loss: 1.2994, bge_loss: 0.6081, tse_loss: 0.6913, Base Lr: 9.84e-06
+2025-07-09 23:04:26,034 RDE.train INFO: Epoch[12] Iteration[500/579], loss: 1.3038, bge_loss: 0.6099, tse_loss: 0.6939, Base Lr: 9.84e-06
+2025-07-09 23:05:36,759 RDE.train INFO: Epoch 12 done. Time per batch: 1.226[s] Speed: 52.2[samples/s]
+2025-07-09 23:05:36,760 RDE.train INFO: Validation Results - Epoch: 12
+2025-07-09 23:05:54,495 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.50 | 79.05 | 86.15 | 43.58 | 22.75 | 220.69998 |
+|   TSE-t2i   | 53.85 | 77.35 | 84.60 | 41.47 | 20.97 | 215.80002 |
+| BGE+TSE-t2i | 56.95 | 78.50 | 86.00 | 44.18 | 23.25 | 221.45001 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-09 23:05:57,602 RDE.train INFO: compute loss batch 0
+2025-07-09 23:06:29,425 RDE.train INFO: compute loss batch 100
+2025-07-09 23:07:01,090 RDE.train INFO: compute loss batch 200
+2025-07-09 23:07:32,779 RDE.train INFO: compute loss batch 300
+2025-07-09 23:08:04,596 RDE.train INFO: compute loss batch 400
+2025-07-09 23:08:36,468 RDE.train INFO: compute loss batch 500
+2025-07-09 23:09:01,217 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 23:10:33,254 RDE.train INFO: Epoch[13] Iteration[100/579], loss: 1.3117, bge_loss: 0.6144, tse_loss: 0.6973, Base Lr: 9.79e-06
+2025-07-09 23:12:03,088 RDE.train INFO: Epoch[13] Iteration[200/579], loss: 1.2858, bge_loss: 0.5973, tse_loss: 0.6886, Base Lr: 9.79e-06
+2025-07-09 23:13:32,853 RDE.train INFO: Epoch[13] Iteration[300/579], loss: 1.2290, bge_loss: 0.5786, tse_loss: 0.6504, Base Lr: 9.79e-06
+2025-07-09 23:15:02,659 RDE.train INFO: Epoch[13] Iteration[400/579], loss: 1.2094, bge_loss: 0.5707, tse_loss: 0.6387, Base Lr: 9.79e-06
+2025-07-09 23:16:32,665 RDE.train INFO: Epoch[13] Iteration[500/579], loss: 1.2203, bge_loss: 0.5750, tse_loss: 0.6453, Base Lr: 9.79e-06
+2025-07-09 23:17:43,339 RDE.train INFO: Epoch 13 done. Time per batch: 1.224[s] Speed: 52.3[samples/s]
+2025-07-09 23:17:43,339 RDE.train INFO: Validation Results - Epoch: 13
+2025-07-09 23:18:00,912 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 56.65 | 79.05 | 86.10 | 43.38 | 21.82 | 221.79999 |
+|   TSE-t2i   | 54.55 | 77.65 | 85.65 | 42.87 | 22.71 |   217.85  |
+| BGE+TSE-t2i | 59.20 | 79.50 | 87.65 | 45.01 | 23.68 |   226.35  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-09 23:18:04,095 RDE.train INFO: compute loss batch 0
+2025-07-09 23:18:35,910 RDE.train INFO: compute loss batch 100
+2025-07-09 23:19:07,639 RDE.train INFO: compute loss batch 200
+2025-07-09 23:19:39,434 RDE.train INFO: compute loss batch 300
+2025-07-09 23:20:11,147 RDE.train INFO: compute loss batch 400
+2025-07-09 23:20:42,898 RDE.train INFO: compute loss batch 500
+2025-07-09 23:21:07,625 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 23:22:39,812 RDE.train INFO: Epoch[14] Iteration[100/579], loss: 1.1003, bge_loss: 0.5083, tse_loss: 0.5920, Base Lr: 9.72e-06
+2025-07-09 23:24:09,802 RDE.train INFO: Epoch[14] Iteration[200/579], loss: 1.1704, bge_loss: 0.5489, tse_loss: 0.6216, Base Lr: 9.72e-06
+2025-07-09 23:25:39,747 RDE.train INFO: Epoch[14] Iteration[300/579], loss: 1.1958, bge_loss: 0.5581, tse_loss: 0.6378, Base Lr: 9.72e-06
+2025-07-09 23:27:09,637 RDE.train INFO: Epoch[14] Iteration[400/579], loss: 1.2163, bge_loss: 0.5709, tse_loss: 0.6453, Base Lr: 9.72e-06
+2025-07-09 23:28:39,600 RDE.train INFO: Epoch[14] Iteration[500/579], loss: 1.2308, bge_loss: 0.5758, tse_loss: 0.6550, Base Lr: 9.72e-06
+2025-07-09 23:29:50,397 RDE.train INFO: Epoch 14 done. Time per batch: 1.225[s] Speed: 52.2[samples/s]
+2025-07-09 23:29:50,397 RDE.train INFO: Validation Results - Epoch: 14
+2025-07-09 23:30:07,783 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 57.45 | 80.60 | 86.75 | 44.91 | 24.06 | 224.8  |
+|   TSE-t2i   | 55.45 | 79.50 | 87.20 | 44.03 | 23.73 | 222.15 |
+| BGE+TSE-t2i | 58.95 | 81.60 | 88.30 | 46.15 | 25.22 | 228.85 |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-09 23:30:10,895 RDE.train INFO: compute loss batch 0
+2025-07-09 23:30:42,584 RDE.train INFO: compute loss batch 100
+2025-07-09 23:31:14,292 RDE.train INFO: compute loss batch 200
+2025-07-09 23:31:46,054 RDE.train INFO: compute loss batch 300
+2025-07-09 23:32:17,803 RDE.train INFO: compute loss batch 400
+2025-07-09 23:32:49,459 RDE.train INFO: compute loss batch 500
+2025-07-09 23:33:14,186 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 23:34:46,256 RDE.train INFO: Epoch[15] Iteration[100/579], loss: 1.2431, bge_loss: 0.5913, tse_loss: 0.6518, Base Lr: 9.65e-06
+2025-07-09 23:36:16,207 RDE.train INFO: Epoch[15] Iteration[200/579], loss: 1.2421, bge_loss: 0.5846, tse_loss: 0.6575, Base Lr: 9.65e-06
+2025-07-09 23:37:46,174 RDE.train INFO: Epoch[15] Iteration[300/579], loss: 1.2270, bge_loss: 0.5709, tse_loss: 0.6561, Base Lr: 9.65e-06
+2025-07-09 23:39:16,141 RDE.train INFO: Epoch[15] Iteration[400/579], loss: 1.2686, bge_loss: 0.5884, tse_loss: 0.6802, Base Lr: 9.65e-06
+2025-07-09 23:40:46,018 RDE.train INFO: Epoch[15] Iteration[500/579], loss: 1.2538, bge_loss: 0.5825, tse_loss: 0.6714, Base Lr: 9.65e-06
+2025-07-09 23:41:56,689 RDE.train INFO: Epoch 15 done. Time per batch: 1.224[s] Speed: 52.3[samples/s]
+2025-07-09 23:41:56,689 RDE.train INFO: Validation Results - Epoch: 15
+2025-07-09 23:42:14,188 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 56.85 | 80.15 | 87.15 | 44.30 | 23.12 |   224.15  |
+|   TSE-t2i   | 57.50 | 79.80 | 86.50 | 43.94 | 22.50 | 223.79999 |
+| BGE+TSE-t2i | 58.60 | 80.95 | 88.05 | 45.79 | 24.23 |   227.6   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-09 23:42:17,396 RDE.train INFO: compute loss batch 0
+2025-07-09 23:42:49,219 RDE.train INFO: compute loss batch 100
+2025-07-09 23:43:21,026 RDE.train INFO: compute loss batch 200
+2025-07-09 23:43:52,783 RDE.train INFO: compute loss batch 300
+2025-07-09 23:44:24,602 RDE.train INFO: compute loss batch 400
+2025-07-09 23:44:56,367 RDE.train INFO: compute loss batch 500
+2025-07-09 23:45:21,043 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 23:46:53,173 RDE.train INFO: Epoch[16] Iteration[100/579], loss: 1.0938, bge_loss: 0.5036, tse_loss: 0.5902, Base Lr: 9.57e-06
+2025-07-09 23:48:23,072 RDE.train INFO: Epoch[16] Iteration[200/579], loss: 1.1077, bge_loss: 0.5010, tse_loss: 0.6068, Base Lr: 9.57e-06
+2025-07-09 23:49:52,993 RDE.train INFO: Epoch[16] Iteration[300/579], loss: 1.0916, bge_loss: 0.4997, tse_loss: 0.5919, Base Lr: 9.57e-06
+2025-07-09 23:51:22,983 RDE.train INFO: Epoch[16] Iteration[400/579], loss: 1.1231, bge_loss: 0.5166, tse_loss: 0.6065, Base Lr: 9.57e-06
+2025-07-09 23:52:52,999 RDE.train INFO: Epoch[16] Iteration[500/579], loss: 1.1276, bge_loss: 0.5180, tse_loss: 0.6096, Base Lr: 9.57e-06
+2025-07-09 23:54:03,722 RDE.train INFO: Epoch 16 done. Time per batch: 1.225[s] Speed: 52.2[samples/s]
+2025-07-09 23:54:03,722 RDE.train INFO: Validation Results - Epoch: 16
+2025-07-09 23:54:21,311 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 57.70 | 77.95 | 87.15 | 44.26 | 22.25 | 222.79999 |
+|   TSE-t2i   | 55.45 | 77.40 | 84.50 | 42.64 | 21.75 |   217.35  |
+| BGE+TSE-t2i | 58.30 | 79.05 | 85.70 | 45.07 | 23.43 | 223.04999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-09 23:54:25,095 RDE.train INFO: compute loss batch 0
+2025-07-09 23:54:56,975 RDE.train INFO: compute loss batch 100
+2025-07-09 23:55:28,844 RDE.train INFO: compute loss batch 200
+2025-07-09 23:56:00,551 RDE.train INFO: compute loss batch 300
+2025-07-09 23:56:32,274 RDE.train INFO: compute loss batch 400
+2025-07-09 23:57:04,001 RDE.train INFO: compute loss batch 500
+2025-07-09 23:57:28,659 RDE.train INFO: 
+Fitting GMM ...
+2025-07-09 23:59:00,834 RDE.train INFO: Epoch[17] Iteration[100/579], loss: 1.0779, bge_loss: 0.4990, tse_loss: 0.5789, Base Lr: 9.48e-06
+2025-07-10 00:00:30,913 RDE.train INFO: Epoch[17] Iteration[200/579], loss: 1.1046, bge_loss: 0.5233, tse_loss: 0.5813, Base Lr: 9.48e-06
+2025-07-10 00:02:01,050 RDE.train INFO: Epoch[17] Iteration[300/579], loss: 1.0903, bge_loss: 0.5134, tse_loss: 0.5768, Base Lr: 9.48e-06
+2025-07-10 00:03:31,137 RDE.train INFO: Epoch[17] Iteration[400/579], loss: 1.1119, bge_loss: 0.5226, tse_loss: 0.5892, Base Lr: 9.48e-06
+2025-07-10 00:05:01,183 RDE.train INFO: Epoch[17] Iteration[500/579], loss: 1.1305, bge_loss: 0.5300, tse_loss: 0.6006, Base Lr: 9.48e-06
+2025-07-10 00:06:11,956 RDE.train INFO: Epoch 17 done. Time per batch: 1.227[s] Speed: 52.2[samples/s]
+2025-07-10 00:06:11,956 RDE.train INFO: Validation Results - Epoch: 17
+2025-07-10 00:06:29,345 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 58.50 | 79.80 | 86.75 | 45.04 | 23.23 | 225.04999 |
+|   TSE-t2i   | 57.30 | 80.15 | 88.00 | 44.52 | 23.28 | 225.45001 |
+| BGE+TSE-t2i | 60.45 | 81.65 | 87.85 | 46.53 | 24.43 | 229.95001 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 00:06:32,411 RDE.train INFO: compute loss batch 0
+2025-07-10 00:07:04,324 RDE.train INFO: compute loss batch 100
+2025-07-10 00:07:36,085 RDE.train INFO: compute loss batch 200
+2025-07-10 00:08:07,905 RDE.train INFO: compute loss batch 300
+2025-07-10 00:08:39,642 RDE.train INFO: compute loss batch 400
+2025-07-10 00:09:11,357 RDE.train INFO: compute loss batch 500
+2025-07-10 00:09:36,027 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 00:11:08,464 RDE.train INFO: Epoch[18] Iteration[100/579], loss: 1.1636, bge_loss: 0.5353, tse_loss: 0.6283, Base Lr: 9.38e-06
+2025-07-10 00:12:38,506 RDE.train INFO: Epoch[18] Iteration[200/579], loss: 1.1523, bge_loss: 0.5271, tse_loss: 0.6252, Base Lr: 9.38e-06
+2025-07-10 00:14:08,483 RDE.train INFO: Epoch[18] Iteration[300/579], loss: 1.1504, bge_loss: 0.5264, tse_loss: 0.6240, Base Lr: 9.38e-06
+2025-07-10 00:15:38,420 RDE.train INFO: Epoch[18] Iteration[400/579], loss: 1.1550, bge_loss: 0.5272, tse_loss: 0.6277, Base Lr: 9.38e-06
+2025-07-10 00:17:08,311 RDE.train INFO: Epoch[18] Iteration[500/579], loss: 1.1528, bge_loss: 0.5295, tse_loss: 0.6233, Base Lr: 9.38e-06
+2025-07-10 00:18:18,866 RDE.train INFO: Epoch 18 done. Time per batch: 1.225[s] Speed: 52.2[samples/s]
+2025-07-10 00:18:18,867 RDE.train INFO: Validation Results - Epoch: 18
+2025-07-10 00:18:36,533 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 53.45 | 77.85 | 85.20 | 41.72 | 21.05 |   216.5   |
+|   TSE-t2i   | 54.05 | 78.80 | 85.95 | 42.18 | 21.04 | 218.79999 |
+| BGE+TSE-t2i | 55.35 | 78.90 | 86.40 | 43.39 | 22.26 |   220.65  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 00:18:39,895 RDE.train INFO: compute loss batch 0
+2025-07-10 00:19:11,608 RDE.train INFO: compute loss batch 100
+2025-07-10 00:19:43,375 RDE.train INFO: compute loss batch 200
+2025-07-10 00:20:15,089 RDE.train INFO: compute loss batch 300
+2025-07-10 00:20:46,828 RDE.train INFO: compute loss batch 400
+2025-07-10 00:21:18,473 RDE.train INFO: compute loss batch 500
+2025-07-10 00:21:43,244 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 00:23:15,391 RDE.train INFO: Epoch[19] Iteration[100/579], loss: 1.1117, bge_loss: 0.5104, tse_loss: 0.6014, Base Lr: 9.28e-06
+2025-07-10 00:24:45,253 RDE.train INFO: Epoch[19] Iteration[200/579], loss: 1.0791, bge_loss: 0.4920, tse_loss: 0.5872, Base Lr: 9.28e-06
+2025-07-10 00:26:15,144 RDE.train INFO: Epoch[19] Iteration[300/579], loss: 1.0653, bge_loss: 0.4963, tse_loss: 0.5690, Base Lr: 9.28e-06
+2025-07-10 00:27:45,091 RDE.train INFO: Epoch[19] Iteration[400/579], loss: 1.0666, bge_loss: 0.4956, tse_loss: 0.5710, Base Lr: 9.28e-06
+2025-07-10 00:29:15,117 RDE.train INFO: Epoch[19] Iteration[500/579], loss: 1.0729, bge_loss: 0.4992, tse_loss: 0.5737, Base Lr: 9.28e-06
+2025-07-10 00:30:25,731 RDE.train INFO: Epoch 19 done. Time per batch: 1.225[s] Speed: 52.3[samples/s]
+2025-07-10 00:30:25,731 RDE.train INFO: Validation Results - Epoch: 19
+2025-07-10 00:30:43,318 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 56.60 | 79.40 | 86.20 | 44.59 | 22.97 |   222.2   |
+|   TSE-t2i   | 57.05 | 80.40 | 87.30 | 44.09 | 22.66 | 224.75002 |
+| BGE+TSE-t2i | 59.45 | 80.60 | 88.40 | 46.11 | 24.28 | 228.45001 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 00:30:46,391 RDE.train INFO: compute loss batch 0
+2025-07-10 00:31:18,172 RDE.train INFO: compute loss batch 100
+2025-07-10 00:31:50,027 RDE.train INFO: compute loss batch 200
+2025-07-10 00:32:21,818 RDE.train INFO: compute loss batch 300
+2025-07-10 00:32:53,619 RDE.train INFO: compute loss batch 400
+2025-07-10 00:33:25,369 RDE.train INFO: compute loss batch 500
+2025-07-10 00:33:50,042 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 00:35:22,309 RDE.train INFO: Epoch[20] Iteration[100/579], loss: 1.0526, bge_loss: 0.4778, tse_loss: 0.5749, Base Lr: 9.16e-06
+2025-07-10 00:36:52,219 RDE.train INFO: Epoch[20] Iteration[200/579], loss: 1.0720, bge_loss: 0.4948, tse_loss: 0.5771, Base Lr: 9.16e-06
+2025-07-10 00:38:22,177 RDE.train INFO: Epoch[20] Iteration[300/579], loss: 1.0853, bge_loss: 0.4939, tse_loss: 0.5914, Base Lr: 9.16e-06
+2025-07-10 00:39:52,257 RDE.train INFO: Epoch[20] Iteration[400/579], loss: 1.0746, bge_loss: 0.4867, tse_loss: 0.5879, Base Lr: 9.16e-06
+2025-07-10 00:41:22,300 RDE.train INFO: Epoch[20] Iteration[500/579], loss: 1.0955, bge_loss: 0.5023, tse_loss: 0.5932, Base Lr: 9.16e-06
+2025-07-10 00:42:32,950 RDE.train INFO: Epoch 20 done. Time per batch: 1.225[s] Speed: 52.2[samples/s]
+2025-07-10 00:42:32,951 RDE.train INFO: Validation Results - Epoch: 20
+2025-07-10 00:42:50,577 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 56.30 | 77.95 | 85.80 | 44.00 | 22.58 | 220.04999 |
+|   TSE-t2i   | 56.75 | 79.05 | 86.75 | 43.84 | 22.33 | 222.54999 |
+| BGE+TSE-t2i | 57.95 | 79.20 | 86.60 | 45.59 | 23.85 |   223.75  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 00:42:53,706 RDE.train INFO: compute loss batch 0
+2025-07-10 00:43:25,478 RDE.train INFO: compute loss batch 100
+2025-07-10 00:43:57,285 RDE.train INFO: compute loss batch 200
+2025-07-10 00:44:29,015 RDE.train INFO: compute loss batch 300
+2025-07-10 00:45:00,722 RDE.train INFO: compute loss batch 400
+2025-07-10 00:45:32,458 RDE.train INFO: compute loss batch 500
+2025-07-10 00:45:57,201 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 00:47:29,148 RDE.train INFO: Epoch[21] Iteration[100/579], loss: 0.9128, bge_loss: 0.4259, tse_loss: 0.4869, Base Lr: 9.05e-06
+2025-07-10 00:48:59,201 RDE.train INFO: Epoch[21] Iteration[200/579], loss: 0.9821, bge_loss: 0.4572, tse_loss: 0.5249, Base Lr: 9.05e-06
+2025-07-10 00:50:29,005 RDE.train INFO: Epoch[21] Iteration[300/579], loss: 0.9563, bge_loss: 0.4375, tse_loss: 0.5187, Base Lr: 9.05e-06
+2025-07-10 00:51:58,830 RDE.train INFO: Epoch[21] Iteration[400/579], loss: 0.9909, bge_loss: 0.4553, tse_loss: 0.5356, Base Lr: 9.05e-06
+2025-07-10 00:53:28,632 RDE.train INFO: Epoch[21] Iteration[500/579], loss: 1.0184, bge_loss: 0.4663, tse_loss: 0.5521, Base Lr: 9.05e-06
+2025-07-10 00:54:39,108 RDE.train INFO: Epoch 21 done. Time per batch: 1.224[s] Speed: 52.3[samples/s]
+2025-07-10 00:54:39,109 RDE.train INFO: Validation Results - Epoch: 21
+2025-07-10 00:54:56,834 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 57.45 | 79.85 | 86.50 | 44.88 | 23.14 |   223.8   |
+|   TSE-t2i   | 57.00 | 79.60 | 87.10 | 44.46 | 23.12 | 223.70001 |
+| BGE+TSE-t2i | 59.35 | 80.85 | 87.60 | 46.47 | 24.46 | 227.79999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 00:54:59,923 RDE.train INFO: compute loss batch 0
+2025-07-10 00:55:31,685 RDE.train INFO: compute loss batch 100
+2025-07-10 00:56:03,384 RDE.train INFO: compute loss batch 200
+2025-07-10 00:56:35,097 RDE.train INFO: compute loss batch 300
+2025-07-10 00:57:06,769 RDE.train INFO: compute loss batch 400
+2025-07-10 00:57:38,431 RDE.train INFO: compute loss batch 500
+2025-07-10 00:58:03,101 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 00:59:34,950 RDE.train INFO: Epoch[22] Iteration[100/579], loss: 0.9360, bge_loss: 0.4354, tse_loss: 0.5006, Base Lr: 8.92e-06
+2025-07-10 01:01:04,881 RDE.train INFO: Epoch[22] Iteration[200/579], loss: 0.9557, bge_loss: 0.4448, tse_loss: 0.5110, Base Lr: 8.92e-06
+2025-07-10 01:02:34,816 RDE.train INFO: Epoch[22] Iteration[300/579], loss: 1.0013, bge_loss: 0.4684, tse_loss: 0.5329, Base Lr: 8.92e-06
+2025-07-10 01:04:04,771 RDE.train INFO: Epoch[22] Iteration[400/579], loss: 1.0215, bge_loss: 0.4723, tse_loss: 0.5492, Base Lr: 8.92e-06
+2025-07-10 01:05:34,592 RDE.train INFO: Epoch[22] Iteration[500/579], loss: 1.0419, bge_loss: 0.4830, tse_loss: 0.5589, Base Lr: 8.92e-06
+2025-07-10 01:06:45,172 RDE.train INFO: Epoch 22 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 01:06:45,172 RDE.train INFO: Validation Results - Epoch: 22
+2025-07-10 01:07:02,441 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 56.55 | 78.75 | 86.05 | 44.10 | 22.64 |   221.35  |
+|   TSE-t2i   | 57.20 | 78.15 | 85.85 | 44.47 | 23.25 | 221.20001 |
+| BGE+TSE-t2i | 58.35 | 79.90 | 86.50 | 45.97 | 24.18 |   224.75  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 01:07:05,892 RDE.train INFO: compute loss batch 0
+2025-07-10 01:07:37,670 RDE.train INFO: compute loss batch 100
+2025-07-10 01:08:09,364 RDE.train INFO: compute loss batch 200
+2025-07-10 01:08:41,085 RDE.train INFO: compute loss batch 300
+2025-07-10 01:09:12,735 RDE.train INFO: compute loss batch 400
+2025-07-10 01:09:44,402 RDE.train INFO: compute loss batch 500
+2025-07-10 01:10:09,088 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 01:11:41,101 RDE.train INFO: Epoch[23] Iteration[100/579], loss: 0.9419, bge_loss: 0.4293, tse_loss: 0.5127, Base Lr: 8.78e-06
+2025-07-10 01:13:11,084 RDE.train INFO: Epoch[23] Iteration[200/579], loss: 0.9892, bge_loss: 0.4556, tse_loss: 0.5335, Base Lr: 8.78e-06
+2025-07-10 01:14:41,015 RDE.train INFO: Epoch[23] Iteration[300/579], loss: 0.9963, bge_loss: 0.4598, tse_loss: 0.5364, Base Lr: 8.78e-06
+2025-07-10 01:16:10,806 RDE.train INFO: Epoch[23] Iteration[400/579], loss: 0.9858, bge_loss: 0.4550, tse_loss: 0.5308, Base Lr: 8.78e-06
+2025-07-10 01:17:40,695 RDE.train INFO: Epoch[23] Iteration[500/579], loss: 0.9745, bge_loss: 0.4496, tse_loss: 0.5249, Base Lr: 8.78e-06
+2025-07-10 01:18:51,226 RDE.train INFO: Epoch 23 done. Time per batch: 1.224[s] Speed: 52.3[samples/s]
+2025-07-10 01:18:51,227 RDE.train INFO: Validation Results - Epoch: 23
+2025-07-10 01:19:08,662 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 56.95 | 80.35 | 88.05 | 44.32 | 22.79 |   225.35  |
+|   TSE-t2i   | 59.55 | 80.35 | 87.70 | 45.34 | 23.36 | 227.59999 |
+| BGE+TSE-t2i | 60.70 | 81.60 | 87.90 | 46.53 | 24.52 | 230.20001 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 01:19:11,526 RDE.train INFO: compute loss batch 0
+2025-07-10 01:19:43,323 RDE.train INFO: compute loss batch 100
+2025-07-10 01:20:15,119 RDE.train INFO: compute loss batch 200
+2025-07-10 01:20:46,920 RDE.train INFO: compute loss batch 300
+2025-07-10 01:21:18,643 RDE.train INFO: compute loss batch 400
+2025-07-10 01:21:50,408 RDE.train INFO: compute loss batch 500
+2025-07-10 01:22:15,118 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 01:23:47,081 RDE.train INFO: Epoch[24] Iteration[100/579], loss: 1.0137, bge_loss: 0.4717, tse_loss: 0.5420, Base Lr: 8.64e-06
+2025-07-10 01:25:17,020 RDE.train INFO: Epoch[24] Iteration[200/579], loss: 1.0058, bge_loss: 0.4675, tse_loss: 0.5384, Base Lr: 8.64e-06
+2025-07-10 01:26:46,892 RDE.train INFO: Epoch[24] Iteration[300/579], loss: 1.0206, bge_loss: 0.4703, tse_loss: 0.5503, Base Lr: 8.64e-06
+2025-07-10 01:28:16,736 RDE.train INFO: Epoch[24] Iteration[400/579], loss: 1.0235, bge_loss: 0.4702, tse_loss: 0.5533, Base Lr: 8.64e-06
+2025-07-10 01:29:46,540 RDE.train INFO: Epoch[24] Iteration[500/579], loss: 1.0118, bge_loss: 0.4639, tse_loss: 0.5479, Base Lr: 8.64e-06
+2025-07-10 01:30:57,121 RDE.train INFO: Epoch 24 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 01:30:57,122 RDE.train INFO: Validation Results - Epoch: 24
+2025-07-10 01:31:14,432 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.75 | 78.95 | 87.25 | 43.93 | 22.54 |   220.95  |
+|   TSE-t2i   | 56.80 | 79.10 | 86.70 | 44.67 | 23.03 | 222.59999 |
+| BGE+TSE-t2i | 58.55 | 80.70 | 87.70 | 46.17 | 24.27 |   226.95  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 01:31:17,701 RDE.train INFO: compute loss batch 0
+2025-07-10 01:31:49,502 RDE.train INFO: compute loss batch 100
+2025-07-10 01:32:21,221 RDE.train INFO: compute loss batch 200
+2025-07-10 01:32:52,876 RDE.train INFO: compute loss batch 300
+2025-07-10 01:33:24,569 RDE.train INFO: compute loss batch 400
+2025-07-10 01:33:56,319 RDE.train INFO: compute loss batch 500
+2025-07-10 01:34:21,007 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 01:35:53,107 RDE.train INFO: Epoch[25] Iteration[100/579], loss: 0.8963, bge_loss: 0.4124, tse_loss: 0.4839, Base Lr: 8.50e-06
+2025-07-10 01:37:23,100 RDE.train INFO: Epoch[25] Iteration[200/579], loss: 0.9609, bge_loss: 0.4373, tse_loss: 0.5236, Base Lr: 8.50e-06
+2025-07-10 01:38:53,145 RDE.train INFO: Epoch[25] Iteration[300/579], loss: 0.9464, bge_loss: 0.4293, tse_loss: 0.5171, Base Lr: 8.50e-06
+2025-07-10 01:40:23,047 RDE.train INFO: Epoch[25] Iteration[400/579], loss: 0.9417, bge_loss: 0.4239, tse_loss: 0.5178, Base Lr: 8.50e-06
+2025-07-10 01:41:52,915 RDE.train INFO: Epoch[25] Iteration[500/579], loss: 0.9492, bge_loss: 0.4302, tse_loss: 0.5191, Base Lr: 8.50e-06
+2025-07-10 01:43:03,554 RDE.train INFO: Epoch 25 done. Time per batch: 1.225[s] Speed: 52.3[samples/s]
+2025-07-10 01:43:03,554 RDE.train INFO: Validation Results - Epoch: 25
+2025-07-10 01:43:20,974 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 56.10 | 79.65 | 86.35 | 44.14 | 22.59 | 222.1  |
+|   TSE-t2i   | 57.40 | 78.95 | 86.20 | 44.91 | 23.24 | 222.55 |
+| BGE+TSE-t2i | 58.80 | 81.20 | 87.35 | 46.22 | 24.31 | 227.35 |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-10 01:43:24,220 RDE.train INFO: compute loss batch 0
+2025-07-10 01:43:55,999 RDE.train INFO: compute loss batch 100
+2025-07-10 01:44:27,675 RDE.train INFO: compute loss batch 200
+2025-07-10 01:44:59,367 RDE.train INFO: compute loss batch 300
+2025-07-10 01:45:31,021 RDE.train INFO: compute loss batch 400
+2025-07-10 01:46:02,718 RDE.train INFO: compute loss batch 500
+2025-07-10 01:46:27,390 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 01:47:59,556 RDE.train INFO: Epoch[26] Iteration[100/579], loss: 0.8780, bge_loss: 0.3929, tse_loss: 0.4851, Base Lr: 8.35e-06
+2025-07-10 01:49:29,348 RDE.train INFO: Epoch[26] Iteration[200/579], loss: 0.9093, bge_loss: 0.4165, tse_loss: 0.4928, Base Lr: 8.35e-06
+2025-07-10 01:50:59,128 RDE.train INFO: Epoch[26] Iteration[300/579], loss: 0.9298, bge_loss: 0.4266, tse_loss: 0.5032, Base Lr: 8.35e-06
+2025-07-10 01:52:28,954 RDE.train INFO: Epoch[26] Iteration[400/579], loss: 0.9089, bge_loss: 0.4196, tse_loss: 0.4893, Base Lr: 8.35e-06
+2025-07-10 01:53:58,732 RDE.train INFO: Epoch[26] Iteration[500/579], loss: 0.9285, bge_loss: 0.4271, tse_loss: 0.5014, Base Lr: 8.35e-06
+2025-07-10 01:55:09,260 RDE.train INFO: Epoch 26 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 01:55:09,261 RDE.train INFO: Validation Results - Epoch: 26
+2025-07-10 01:55:26,691 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 57.10 | 79.25 | 86.60 | 44.67 | 23.12 | 222.95001 |
+|   TSE-t2i   | 56.70 | 78.35 | 84.95 | 44.50 | 23.22 | 219.99998 |
+| BGE+TSE-t2i | 58.75 | 80.05 | 87.10 | 46.26 | 24.55 |   225.9   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 01:55:29,798 RDE.train INFO: compute loss batch 0
+2025-07-10 01:56:01,508 RDE.train INFO: compute loss batch 100
+2025-07-10 01:56:33,248 RDE.train INFO: compute loss batch 200
+2025-07-10 01:57:04,910 RDE.train INFO: compute loss batch 300
+2025-07-10 01:57:36,594 RDE.train INFO: compute loss batch 400
+2025-07-10 01:58:08,199 RDE.train INFO: compute loss batch 500
+2025-07-10 01:58:32,815 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 02:00:04,735 RDE.train INFO: Epoch[27] Iteration[100/579], loss: 0.7035, bge_loss: 0.3185, tse_loss: 0.3850, Base Lr: 8.19e-06
+2025-07-10 02:01:34,573 RDE.train INFO: Epoch[27] Iteration[200/579], loss: 0.7226, bge_loss: 0.3290, tse_loss: 0.3936, Base Lr: 8.19e-06
+2025-07-10 02:03:04,319 RDE.train INFO: Epoch[27] Iteration[300/579], loss: 0.8076, bge_loss: 0.3633, tse_loss: 0.4443, Base Lr: 8.19e-06
+2025-07-10 02:04:34,120 RDE.train INFO: Epoch[27] Iteration[400/579], loss: 0.8426, bge_loss: 0.3855, tse_loss: 0.4571, Base Lr: 8.19e-06
+2025-07-10 02:06:03,960 RDE.train INFO: Epoch[27] Iteration[500/579], loss: 0.8460, bge_loss: 0.3873, tse_loss: 0.4587, Base Lr: 8.19e-06
+2025-07-10 02:07:14,501 RDE.train INFO: Epoch 27 done. Time per batch: 1.222[s] Speed: 52.4[samples/s]
+2025-07-10 02:07:14,501 RDE.train INFO: Validation Results - Epoch: 27
+2025-07-10 02:07:31,992 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 56.80 | 79.45 | 87.10 | 44.83 | 23.07 |   223.35  |
+|   TSE-t2i   | 57.75 | 79.65 | 86.15 | 44.83 | 23.25 | 223.54999 |
+| BGE+TSE-t2i | 59.15 | 81.15 | 88.05 | 46.59 | 24.51 |   228.35  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 02:07:34,922 RDE.train INFO: compute loss batch 0
+2025-07-10 02:08:06,711 RDE.train INFO: compute loss batch 100
+2025-07-10 02:08:38,489 RDE.train INFO: compute loss batch 200
+2025-07-10 02:09:10,276 RDE.train INFO: compute loss batch 300
+2025-07-10 02:09:42,020 RDE.train INFO: compute loss batch 400
+2025-07-10 02:10:13,721 RDE.train INFO: compute loss batch 500
+2025-07-10 02:10:38,433 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 02:12:10,211 RDE.train INFO: Epoch[28] Iteration[100/579], loss: 0.8116, bge_loss: 0.3600, tse_loss: 0.4516, Base Lr: 8.02e-06
+2025-07-10 02:13:40,092 RDE.train INFO: Epoch[28] Iteration[200/579], loss: 0.8447, bge_loss: 0.3753, tse_loss: 0.4694, Base Lr: 8.02e-06
+2025-07-10 02:15:09,908 RDE.train INFO: Epoch[28] Iteration[300/579], loss: 0.8667, bge_loss: 0.3849, tse_loss: 0.4817, Base Lr: 8.02e-06
+2025-07-10 02:16:39,726 RDE.train INFO: Epoch[28] Iteration[400/579], loss: 0.8857, bge_loss: 0.4002, tse_loss: 0.4855, Base Lr: 8.02e-06
+2025-07-10 02:18:09,617 RDE.train INFO: Epoch[28] Iteration[500/579], loss: 0.8875, bge_loss: 0.4048, tse_loss: 0.4828, Base Lr: 8.02e-06
+2025-07-10 02:19:20,131 RDE.train INFO: Epoch 28 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 02:19:20,131 RDE.train INFO: Validation Results - Epoch: 28
+2025-07-10 02:19:37,597 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 53.90 | 79.35 | 86.60 | 43.56 | 23.75 | 219.85 |
+|   TSE-t2i   | 55.05 | 78.35 | 85.60 | 44.21 | 23.89 | 219.0  |
+| BGE+TSE-t2i | 56.80 | 79.75 | 86.25 | 45.49 | 25.16 | 222.8  |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-10 02:19:40,700 RDE.train INFO: compute loss batch 0
+2025-07-10 02:20:12,435 RDE.train INFO: compute loss batch 100
+2025-07-10 02:20:44,095 RDE.train INFO: compute loss batch 200
+2025-07-10 02:21:15,779 RDE.train INFO: compute loss batch 300
+2025-07-10 02:21:47,431 RDE.train INFO: compute loss batch 400
+2025-07-10 02:22:19,122 RDE.train INFO: compute loss batch 500
+2025-07-10 02:22:43,751 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 02:24:15,694 RDE.train INFO: Epoch[29] Iteration[100/579], loss: 0.8841, bge_loss: 0.4093, tse_loss: 0.4749, Base Lr: 7.85e-06
+2025-07-10 02:25:45,495 RDE.train INFO: Epoch[29] Iteration[200/579], loss: 0.8697, bge_loss: 0.4024, tse_loss: 0.4673, Base Lr: 7.85e-06
+2025-07-10 02:27:15,304 RDE.train INFO: Epoch[29] Iteration[300/579], loss: 0.8961, bge_loss: 0.4135, tse_loss: 0.4825, Base Lr: 7.85e-06
+2025-07-10 02:28:45,094 RDE.train INFO: Epoch[29] Iteration[400/579], loss: 0.8703, bge_loss: 0.3974, tse_loss: 0.4729, Base Lr: 7.85e-06
+2025-07-10 02:30:15,018 RDE.train INFO: Epoch[29] Iteration[500/579], loss: 0.8765, bge_loss: 0.4003, tse_loss: 0.4762, Base Lr: 7.85e-06
+2025-07-10 02:31:25,611 RDE.train INFO: Epoch 29 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 02:31:25,611 RDE.train INFO: Validation Results - Epoch: 29
+2025-07-10 02:31:43,024 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.55 | 78.35 | 86.15 | 43.91 | 23.25 | 220.04999 |
+|   TSE-t2i   | 56.75 | 78.00 | 84.60 | 44.41 | 23.64 |   219.35  |
+| BGE+TSE-t2i | 58.00 | 79.35 | 86.65 | 45.90 | 24.92 |   224.0   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 02:31:46,095 RDE.train INFO: compute loss batch 0
+2025-07-10 02:32:17,806 RDE.train INFO: compute loss batch 100
+2025-07-10 02:32:49,573 RDE.train INFO: compute loss batch 200
+2025-07-10 02:33:21,379 RDE.train INFO: compute loss batch 300
+2025-07-10 02:33:53,050 RDE.train INFO: compute loss batch 400
+2025-07-10 02:34:24,771 RDE.train INFO: compute loss batch 500
+2025-07-10 02:34:49,463 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 02:36:21,538 RDE.train INFO: Epoch[30] Iteration[100/579], loss: 0.7544, bge_loss: 0.3538, tse_loss: 0.4006, Base Lr: 7.68e-06
+2025-07-10 02:37:51,374 RDE.train INFO: Epoch[30] Iteration[200/579], loss: 0.7542, bge_loss: 0.3524, tse_loss: 0.4019, Base Lr: 7.68e-06
+2025-07-10 02:39:21,250 RDE.train INFO: Epoch[30] Iteration[300/579], loss: 0.8007, bge_loss: 0.3723, tse_loss: 0.4284, Base Lr: 7.68e-06
+2025-07-10 02:40:51,156 RDE.train INFO: Epoch[30] Iteration[400/579], loss: 0.8062, bge_loss: 0.3754, tse_loss: 0.4308, Base Lr: 7.68e-06
+2025-07-10 02:42:20,928 RDE.train INFO: Epoch[30] Iteration[500/579], loss: 0.8091, bge_loss: 0.3737, tse_loss: 0.4354, Base Lr: 7.68e-06
+2025-07-10 02:43:31,445 RDE.train INFO: Epoch 30 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 02:43:31,446 RDE.train INFO: Validation Results - Epoch: 30
+2025-07-10 02:43:48,787 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 57.40 | 81.05 | 87.45 | 45.80 | 24.47 | 225.90001 |
+|   TSE-t2i   | 58.05 | 79.40 | 86.60 | 45.35 | 24.00 | 224.04999 |
+| BGE+TSE-t2i | 60.55 | 81.30 | 87.60 | 47.20 | 25.61 | 229.45001 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 02:43:52,096 RDE.train INFO: compute loss batch 0
+2025-07-10 02:44:23,735 RDE.train INFO: compute loss batch 100
+2025-07-10 02:44:55,431 RDE.train INFO: compute loss batch 200
+2025-07-10 02:45:27,137 RDE.train INFO: compute loss batch 300
+2025-07-10 02:45:58,825 RDE.train INFO: compute loss batch 400
+2025-07-10 02:46:30,583 RDE.train INFO: compute loss batch 500
+2025-07-10 02:46:55,346 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 02:48:27,391 RDE.train INFO: Epoch[31] Iteration[100/579], loss: 0.7494, bge_loss: 0.3334, tse_loss: 0.4159, Base Lr: 7.50e-06
+2025-07-10 02:49:57,317 RDE.train INFO: Epoch[31] Iteration[200/579], loss: 0.7591, bge_loss: 0.3494, tse_loss: 0.4097, Base Lr: 7.50e-06
+2025-07-10 02:51:27,148 RDE.train INFO: Epoch[31] Iteration[300/579], loss: 0.8094, bge_loss: 0.3689, tse_loss: 0.4406, Base Lr: 7.50e-06
+2025-07-10 02:52:57,027 RDE.train INFO: Epoch[31] Iteration[400/579], loss: 0.8105, bge_loss: 0.3736, tse_loss: 0.4369, Base Lr: 7.50e-06
+2025-07-10 02:54:26,711 RDE.train INFO: Epoch[31] Iteration[500/579], loss: 0.8147, bge_loss: 0.3760, tse_loss: 0.4386, Base Lr: 7.50e-06
+2025-07-10 02:55:37,281 RDE.train INFO: Epoch 31 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 02:55:37,281 RDE.train INFO: Validation Results - Epoch: 31
+2025-07-10 02:55:54,619 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 57.40 | 80.75 | 86.95 | 45.04 | 23.28 | 225.09999 |
+|   TSE-t2i   | 57.50 | 79.20 | 86.25 | 45.08 | 23.46 |   222.95  |
+| BGE+TSE-t2i | 59.50 | 80.85 | 87.50 | 46.59 | 24.77 |   227.85  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 02:55:57,695 RDE.train INFO: compute loss batch 0
+2025-07-10 02:56:29,376 RDE.train INFO: compute loss batch 100
+2025-07-10 02:57:01,076 RDE.train INFO: compute loss batch 200
+2025-07-10 02:57:32,781 RDE.train INFO: compute loss batch 300
+2025-07-10 02:58:04,474 RDE.train INFO: compute loss batch 400
+2025-07-10 02:58:36,142 RDE.train INFO: compute loss batch 500
+2025-07-10 02:59:00,830 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 03:00:32,809 RDE.train INFO: Epoch[32] Iteration[100/579], loss: 0.7661, bge_loss: 0.3587, tse_loss: 0.4074, Base Lr: 7.32e-06
+2025-07-10 03:02:02,598 RDE.train INFO: Epoch[32] Iteration[200/579], loss: 0.7779, bge_loss: 0.3601, tse_loss: 0.4177, Base Lr: 7.32e-06
+2025-07-10 03:03:32,327 RDE.train INFO: Epoch[32] Iteration[300/579], loss: 0.7990, bge_loss: 0.3679, tse_loss: 0.4311, Base Lr: 7.32e-06
+2025-07-10 03:05:02,194 RDE.train INFO: Epoch[32] Iteration[400/579], loss: 0.8010, bge_loss: 0.3670, tse_loss: 0.4340, Base Lr: 7.32e-06
+2025-07-10 03:06:32,004 RDE.train INFO: Epoch[32] Iteration[500/579], loss: 0.8072, bge_loss: 0.3678, tse_loss: 0.4394, Base Lr: 7.32e-06
+2025-07-10 03:07:42,556 RDE.train INFO: Epoch 32 done. Time per batch: 1.223[s] Speed: 52.4[samples/s]
+2025-07-10 03:07:42,557 RDE.train INFO: Validation Results - Epoch: 32
+2025-07-10 03:08:00,226 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 57.30 | 80.80 | 87.55 | 44.81 | 23.16 | 225.65001 |
+|   TSE-t2i   | 56.30 | 79.15 | 86.85 | 44.62 | 23.39 | 222.29999 |
+| BGE+TSE-t2i | 58.50 | 82.15 | 87.95 | 46.37 | 24.68 | 228.59999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 03:08:03,406 RDE.train INFO: compute loss batch 0
+2025-07-10 03:08:35,098 RDE.train INFO: compute loss batch 100
+2025-07-10 03:09:06,811 RDE.train INFO: compute loss batch 200
+2025-07-10 03:09:38,465 RDE.train INFO: compute loss batch 300
+2025-07-10 03:10:10,153 RDE.train INFO: compute loss batch 400
+2025-07-10 03:10:41,863 RDE.train INFO: compute loss batch 500
+2025-07-10 03:11:06,553 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 03:12:38,615 RDE.train INFO: Epoch[33] Iteration[100/579], loss: 0.6655, bge_loss: 0.3054, tse_loss: 0.3602, Base Lr: 7.13e-06
+2025-07-10 03:14:08,440 RDE.train INFO: Epoch[33] Iteration[200/579], loss: 0.7139, bge_loss: 0.3209, tse_loss: 0.3930, Base Lr: 7.13e-06
+2025-07-10 03:15:38,278 RDE.train INFO: Epoch[33] Iteration[300/579], loss: 0.7018, bge_loss: 0.3194, tse_loss: 0.3824, Base Lr: 7.13e-06
+2025-07-10 03:17:08,133 RDE.train INFO: Epoch[33] Iteration[400/579], loss: 0.7409, bge_loss: 0.3379, tse_loss: 0.4030, Base Lr: 7.13e-06
+2025-07-10 03:18:37,899 RDE.train INFO: Epoch[33] Iteration[500/579], loss: 0.7437, bge_loss: 0.3382, tse_loss: 0.4055, Base Lr: 7.13e-06
+2025-07-10 03:19:48,369 RDE.train INFO: Epoch 33 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 03:19:48,369 RDE.train INFO: Validation Results - Epoch: 33
+2025-07-10 03:20:05,790 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 58.05 | 80.55 | 87.10 | 45.20 | 23.40 | 225.69998 |
+|   TSE-t2i   | 57.35 | 78.95 | 86.45 | 45.01 | 23.73 | 222.74998 |
+| BGE+TSE-t2i | 59.20 | 81.90 | 87.90 | 46.85 | 24.97 |   229.0   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 03:20:09,119 RDE.train INFO: compute loss batch 0
+2025-07-10 03:20:40,878 RDE.train INFO: compute loss batch 100
+2025-07-10 03:21:12,562 RDE.train INFO: compute loss batch 200
+2025-07-10 03:21:44,235 RDE.train INFO: compute loss batch 300
+2025-07-10 03:22:15,887 RDE.train INFO: compute loss batch 400
+2025-07-10 03:22:47,543 RDE.train INFO: compute loss batch 500
+2025-07-10 03:23:12,206 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 03:24:44,111 RDE.train INFO: Epoch[34] Iteration[100/579], loss: 0.6866, bge_loss: 0.3125, tse_loss: 0.3740, Base Lr: 6.94e-06
+2025-07-10 03:26:13,904 RDE.train INFO: Epoch[34] Iteration[200/579], loss: 0.7647, bge_loss: 0.3596, tse_loss: 0.4051, Base Lr: 6.94e-06
+2025-07-10 03:27:43,795 RDE.train INFO: Epoch[34] Iteration[300/579], loss: 0.7286, bge_loss: 0.3392, tse_loss: 0.3893, Base Lr: 6.94e-06
+2025-07-10 03:29:13,686 RDE.train INFO: Epoch[34] Iteration[400/579], loss: 0.7463, bge_loss: 0.3450, tse_loss: 0.4013, Base Lr: 6.94e-06
+2025-07-10 03:30:43,510 RDE.train INFO: Epoch[34] Iteration[500/579], loss: 0.7502, bge_loss: 0.3459, tse_loss: 0.4044, Base Lr: 6.94e-06
+2025-07-10 03:31:54,028 RDE.train INFO: Epoch 34 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 03:31:54,028 RDE.train INFO: Validation Results - Epoch: 34
+2025-07-10 03:32:11,491 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 55.70 | 78.50 | 86.25 | 45.06 | 24.11 | 220.45 |
+|   TSE-t2i   | 55.40 | 77.60 | 85.20 | 45.13 | 25.43 | 218.2  |
+| BGE+TSE-t2i | 56.50 | 78.85 | 86.80 | 46.64 | 26.23 | 222.15 |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-10 03:32:14,431 RDE.train INFO: compute loss batch 0
+2025-07-10 03:32:46,200 RDE.train INFO: compute loss batch 100
+2025-07-10 03:33:17,901 RDE.train INFO: compute loss batch 200
+2025-07-10 03:33:49,603 RDE.train INFO: compute loss batch 300
+2025-07-10 03:34:21,242 RDE.train INFO: compute loss batch 400
+2025-07-10 03:34:52,865 RDE.train INFO: compute loss batch 500
+2025-07-10 03:35:17,543 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 03:36:49,544 RDE.train INFO: Epoch[35] Iteration[100/579], loss: 0.7013, bge_loss: 0.3281, tse_loss: 0.3733, Base Lr: 6.74e-06
+2025-07-10 03:38:19,453 RDE.train INFO: Epoch[35] Iteration[200/579], loss: 0.6923, bge_loss: 0.3150, tse_loss: 0.3774, Base Lr: 6.74e-06
+2025-07-10 03:39:49,239 RDE.train INFO: Epoch[35] Iteration[300/579], loss: 0.6961, bge_loss: 0.3152, tse_loss: 0.3809, Base Lr: 6.74e-06
+2025-07-10 03:41:19,173 RDE.train INFO: Epoch[35] Iteration[400/579], loss: 0.6949, bge_loss: 0.3147, tse_loss: 0.3801, Base Lr: 6.74e-06
+2025-07-10 03:42:48,958 RDE.train INFO: Epoch[35] Iteration[500/579], loss: 0.7068, bge_loss: 0.3194, tse_loss: 0.3873, Base Lr: 6.74e-06
+2025-07-10 03:43:59,556 RDE.train INFO: Epoch 35 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 03:43:59,557 RDE.train INFO: Validation Results - Epoch: 35
+2025-07-10 03:44:17,087 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 53.45 | 78.45 | 86.45 | 44.75 | 24.54 | 218.34999 |
+|   TSE-t2i   | 54.40 | 78.60 | 85.60 | 44.56 | 23.81 |   218.6   |
+| BGE+TSE-t2i | 56.70 | 79.35 | 87.40 | 46.51 | 25.67 | 223.44998 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 03:44:20,201 RDE.train INFO: compute loss batch 0
+2025-07-10 03:44:51,915 RDE.train INFO: compute loss batch 100
+2025-07-10 03:45:23,683 RDE.train INFO: compute loss batch 200
+2025-07-10 03:45:55,375 RDE.train INFO: compute loss batch 300
+2025-07-10 03:46:27,107 RDE.train INFO: compute loss batch 400
+2025-07-10 03:46:58,792 RDE.train INFO: compute loss batch 500
+2025-07-10 03:47:23,490 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 03:48:55,588 RDE.train INFO: Epoch[36] Iteration[100/579], loss: 0.5989, bge_loss: 0.2833, tse_loss: 0.3157, Base Lr: 6.55e-06
+2025-07-10 03:50:25,388 RDE.train INFO: Epoch[36] Iteration[200/579], loss: 0.6184, bge_loss: 0.2890, tse_loss: 0.3294, Base Lr: 6.55e-06
+2025-07-10 03:51:55,207 RDE.train INFO: Epoch[36] Iteration[300/579], loss: 0.6338, bge_loss: 0.2970, tse_loss: 0.3368, Base Lr: 6.55e-06
+2025-07-10 03:53:25,065 RDE.train INFO: Epoch[36] Iteration[400/579], loss: 0.6557, bge_loss: 0.3066, tse_loss: 0.3491, Base Lr: 6.55e-06
+2025-07-10 03:54:54,922 RDE.train INFO: Epoch[36] Iteration[500/579], loss: 0.6764, bge_loss: 0.3152, tse_loss: 0.3612, Base Lr: 6.55e-06
+2025-07-10 03:56:05,478 RDE.train INFO: Epoch 36 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 03:56:05,478 RDE.train INFO: Validation Results - Epoch: 36
+2025-07-10 03:56:22,895 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.50 | 78.65 | 85.40 | 44.50 | 23.91 | 219.54999 |
+|   TSE-t2i   | 56.35 | 77.15 | 85.80 | 44.23 | 23.55 | 219.29999 |
+| BGE+TSE-t2i | 57.90 | 79.45 | 86.50 | 46.07 | 25.10 |   223.85  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 03:56:25,921 RDE.train INFO: compute loss batch 0
+2025-07-10 03:56:57,684 RDE.train INFO: compute loss batch 100
+2025-07-10 03:57:29,424 RDE.train INFO: compute loss batch 200
+2025-07-10 03:58:01,092 RDE.train INFO: compute loss batch 300
+2025-07-10 03:58:32,744 RDE.train INFO: compute loss batch 400
+2025-07-10 03:59:04,416 RDE.train INFO: compute loss batch 500
+2025-07-10 03:59:29,108 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 04:01:01,116 RDE.train INFO: Epoch[37] Iteration[100/579], loss: 0.6363, bge_loss: 0.2889, tse_loss: 0.3473, Base Lr: 6.34e-06
+2025-07-10 04:02:31,030 RDE.train INFO: Epoch[37] Iteration[200/579], loss: 0.6680, bge_loss: 0.3012, tse_loss: 0.3668, Base Lr: 6.34e-06
+2025-07-10 04:04:00,943 RDE.train INFO: Epoch[37] Iteration[300/579], loss: 0.6725, bge_loss: 0.3054, tse_loss: 0.3671, Base Lr: 6.34e-06
+2025-07-10 04:05:30,823 RDE.train INFO: Epoch[37] Iteration[400/579], loss: 0.6857, bge_loss: 0.3117, tse_loss: 0.3740, Base Lr: 6.34e-06
+2025-07-10 04:07:00,647 RDE.train INFO: Epoch[37] Iteration[500/579], loss: 0.6928, bge_loss: 0.3133, tse_loss: 0.3794, Base Lr: 6.34e-06
+2025-07-10 04:08:11,201 RDE.train INFO: Epoch 37 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 04:08:11,201 RDE.train INFO: Validation Results - Epoch: 37
+2025-07-10 04:08:28,693 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 58.30 | 78.90 | 86.20 | 45.80 | 24.83 | 223.4  |
+|   TSE-t2i   | 57.00 | 78.50 | 86.15 | 45.15 | 24.96 | 221.65 |
+| BGE+TSE-t2i | 59.20 | 80.75 | 87.15 | 47.05 | 26.42 | 227.1  |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-10 04:08:31,895 RDE.train INFO: compute loss batch 0
+2025-07-10 04:09:03,601 RDE.train INFO: compute loss batch 100
+2025-07-10 04:09:35,403 RDE.train INFO: compute loss batch 200
+2025-07-10 04:10:07,087 RDE.train INFO: compute loss batch 300
+2025-07-10 04:10:38,724 RDE.train INFO: compute loss batch 400
+2025-07-10 04:11:10,357 RDE.train INFO: compute loss batch 500
+2025-07-10 04:11:35,042 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 04:13:06,928 RDE.train INFO: Epoch[38] Iteration[100/579], loss: 0.5369, bge_loss: 0.2323, tse_loss: 0.3046, Base Lr: 6.14e-06
+2025-07-10 04:14:36,747 RDE.train INFO: Epoch[38] Iteration[200/579], loss: 0.5760, bge_loss: 0.2574, tse_loss: 0.3187, Base Lr: 6.14e-06
+2025-07-10 04:16:06,645 RDE.train INFO: Epoch[38] Iteration[300/579], loss: 0.5837, bge_loss: 0.2609, tse_loss: 0.3227, Base Lr: 6.14e-06
+2025-07-10 04:17:36,422 RDE.train INFO: Epoch[38] Iteration[400/579], loss: 0.5969, bge_loss: 0.2668, tse_loss: 0.3301, Base Lr: 6.14e-06
+2025-07-10 04:19:06,247 RDE.train INFO: Epoch[38] Iteration[500/579], loss: 0.6165, bge_loss: 0.2801, tse_loss: 0.3364, Base Lr: 6.14e-06
+2025-07-10 04:20:16,740 RDE.train INFO: Epoch 38 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 04:20:16,741 RDE.train INFO: Validation Results - Epoch: 38
+2025-07-10 04:20:34,025 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 56.30 | 78.85 | 86.60 | 44.61 | 23.98 |   221.75  |
+|   TSE-t2i   | 55.70 | 79.10 | 86.40 | 44.39 | 24.22 | 221.19998 |
+| BGE+TSE-t2i | 58.80 | 79.95 | 87.50 | 46.40 | 25.53 |   226.25  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 04:20:37,097 RDE.train INFO: compute loss batch 0
+2025-07-10 04:21:08,844 RDE.train INFO: compute loss batch 100
+2025-07-10 04:21:40,565 RDE.train INFO: compute loss batch 200
+2025-07-10 04:22:12,363 RDE.train INFO: compute loss batch 300
+2025-07-10 04:22:44,029 RDE.train INFO: compute loss batch 400
+2025-07-10 04:23:15,682 RDE.train INFO: compute loss batch 500
+2025-07-10 04:23:40,319 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 04:25:12,359 RDE.train INFO: Epoch[39] Iteration[100/579], loss: 0.5500, bge_loss: 0.2476, tse_loss: 0.3024, Base Lr: 5.94e-06
+2025-07-10 04:26:42,176 RDE.train INFO: Epoch[39] Iteration[200/579], loss: 0.5836, bge_loss: 0.2637, tse_loss: 0.3199, Base Lr: 5.94e-06
+2025-07-10 04:28:12,088 RDE.train INFO: Epoch[39] Iteration[300/579], loss: 0.5804, bge_loss: 0.2654, tse_loss: 0.3150, Base Lr: 5.94e-06
+2025-07-10 04:29:41,996 RDE.train INFO: Epoch[39] Iteration[400/579], loss: 0.6038, bge_loss: 0.2764, tse_loss: 0.3275, Base Lr: 5.94e-06
+2025-07-10 04:31:11,820 RDE.train INFO: Epoch[39] Iteration[500/579], loss: 0.6054, bge_loss: 0.2750, tse_loss: 0.3304, Base Lr: 5.94e-06
+2025-07-10 04:32:22,453 RDE.train INFO: Epoch 39 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 04:32:22,453 RDE.train INFO: Validation Results - Epoch: 39
+2025-07-10 04:32:39,901 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.20 | 78.85 | 86.40 | 43.65 | 22.70 | 220.44998 |
+|   TSE-t2i   | 54.20 | 77.05 | 84.10 | 42.97 | 22.33 |   215.35  |
+| BGE+TSE-t2i | 57.65 | 79.45 | 86.90 | 45.21 | 23.87 |   224.0   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 04:32:42,976 RDE.train INFO: compute loss batch 0
+2025-07-10 04:33:14,649 RDE.train INFO: compute loss batch 100
+2025-07-10 04:33:46,438 RDE.train INFO: compute loss batch 200
+2025-07-10 04:34:18,162 RDE.train INFO: compute loss batch 300
+2025-07-10 04:34:49,948 RDE.train INFO: compute loss batch 400
+2025-07-10 04:35:21,604 RDE.train INFO: compute loss batch 500
+2025-07-10 04:35:46,224 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 04:37:18,268 RDE.train INFO: Epoch[40] Iteration[100/579], loss: 0.5143, bge_loss: 0.2249, tse_loss: 0.2894, Base Lr: 5.73e-06
+2025-07-10 04:38:48,178 RDE.train INFO: Epoch[40] Iteration[200/579], loss: 0.5524, bge_loss: 0.2491, tse_loss: 0.3033, Base Lr: 5.73e-06
+2025-07-10 04:40:18,069 RDE.train INFO: Epoch[40] Iteration[300/579], loss: 0.5770, bge_loss: 0.2596, tse_loss: 0.3174, Base Lr: 5.73e-06
+2025-07-10 04:41:47,925 RDE.train INFO: Epoch[40] Iteration[400/579], loss: 0.5913, bge_loss: 0.2657, tse_loss: 0.3256, Base Lr: 5.73e-06
+2025-07-10 04:43:17,822 RDE.train INFO: Epoch[40] Iteration[500/579], loss: 0.5987, bge_loss: 0.2704, tse_loss: 0.3283, Base Lr: 5.73e-06
+2025-07-10 04:44:28,328 RDE.train INFO: Epoch 40 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 04:44:28,329 RDE.train INFO: Validation Results - Epoch: 40
+2025-07-10 04:44:45,893 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.25 | 77.90 | 85.60 | 43.98 | 22.84 |   218.75  |
+|   TSE-t2i   | 54.80 | 77.85 | 85.40 | 44.30 | 23.53 | 218.04999 |
+| BGE+TSE-t2i | 57.15 | 79.30 | 86.25 | 45.92 | 24.71 |   222.7   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 04:44:49,095 RDE.train INFO: compute loss batch 0
+2025-07-10 04:45:20,862 RDE.train INFO: compute loss batch 100
+2025-07-10 04:45:52,547 RDE.train INFO: compute loss batch 200
+2025-07-10 04:46:24,237 RDE.train INFO: compute loss batch 300
+2025-07-10 04:46:55,927 RDE.train INFO: compute loss batch 400
+2025-07-10 04:47:27,641 RDE.train INFO: compute loss batch 500
+2025-07-10 04:47:52,363 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 04:49:24,184 RDE.train INFO: Epoch[41] Iteration[100/579], loss: 0.5471, bge_loss: 0.2513, tse_loss: 0.2958, Base Lr: 5.52e-06
+2025-07-10 04:50:53,972 RDE.train INFO: Epoch[41] Iteration[200/579], loss: 0.5394, bge_loss: 0.2404, tse_loss: 0.2990, Base Lr: 5.52e-06
+2025-07-10 04:52:23,849 RDE.train INFO: Epoch[41] Iteration[300/579], loss: 0.5574, bge_loss: 0.2502, tse_loss: 0.3072, Base Lr: 5.52e-06
+2025-07-10 04:53:53,682 RDE.train INFO: Epoch[41] Iteration[400/579], loss: 0.5768, bge_loss: 0.2555, tse_loss: 0.3213, Base Lr: 5.52e-06
+2025-07-10 04:55:23,626 RDE.train INFO: Epoch[41] Iteration[500/579], loss: 0.5849, bge_loss: 0.2626, tse_loss: 0.3223, Base Lr: 5.52e-06
+2025-07-10 04:56:34,150 RDE.train INFO: Epoch 41 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 04:56:34,150 RDE.train INFO: Validation Results - Epoch: 41
+2025-07-10 04:56:51,566 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 55.75 | 79.00 | 86.35 | 44.92 | 24.05 | 221.1  |
+|   TSE-t2i   | 57.15 | 78.20 | 85.40 | 45.19 | 24.44 | 220.75 |
+| BGE+TSE-t2i | 58.70 | 80.15 | 86.50 | 46.84 | 25.52 | 225.35 |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-10 04:56:54,695 RDE.train INFO: compute loss batch 0
+2025-07-10 04:57:26,506 RDE.train INFO: compute loss batch 100
+2025-07-10 04:57:58,277 RDE.train INFO: compute loss batch 200
+2025-07-10 04:58:29,952 RDE.train INFO: compute loss batch 300
+2025-07-10 04:59:01,617 RDE.train INFO: compute loss batch 400
+2025-07-10 04:59:33,266 RDE.train INFO: compute loss batch 500
+2025-07-10 04:59:57,857 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 05:01:29,694 RDE.train INFO: Epoch[42] Iteration[100/579], loss: 0.5226, bge_loss: 0.2424, tse_loss: 0.2802, Base Lr: 5.31e-06
+2025-07-10 05:02:59,560 RDE.train INFO: Epoch[42] Iteration[200/579], loss: 0.5326, bge_loss: 0.2467, tse_loss: 0.2858, Base Lr: 5.31e-06
+2025-07-10 05:04:29,446 RDE.train INFO: Epoch[42] Iteration[300/579], loss: 0.5461, bge_loss: 0.2487, tse_loss: 0.2974, Base Lr: 5.31e-06
+2025-07-10 05:05:59,253 RDE.train INFO: Epoch[42] Iteration[400/579], loss: 0.5670, bge_loss: 0.2590, tse_loss: 0.3080, Base Lr: 5.31e-06
+2025-07-10 05:07:29,124 RDE.train INFO: Epoch[42] Iteration[500/579], loss: 0.5913, bge_loss: 0.2677, tse_loss: 0.3236, Base Lr: 5.31e-06
+2025-07-10 05:08:39,639 RDE.train INFO: Epoch 42 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 05:08:39,639 RDE.train INFO: Validation Results - Epoch: 42
+2025-07-10 05:08:57,023 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.20 | 77.35 | 85.30 | 43.85 | 23.00 |   216.85  |
+|   TSE-t2i   | 55.15 | 77.25 | 84.75 | 44.61 | 23.76 |   217.15  |
+| BGE+TSE-t2i | 56.80 | 78.70 | 86.05 | 45.89 | 24.96 | 221.54999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 05:09:00,095 RDE.train INFO: compute loss batch 0
+2025-07-10 05:09:31,784 RDE.train INFO: compute loss batch 100
+2025-07-10 05:10:03,546 RDE.train INFO: compute loss batch 200
+2025-07-10 05:10:35,195 RDE.train INFO: compute loss batch 300
+2025-07-10 05:11:06,927 RDE.train INFO: compute loss batch 400
+2025-07-10 05:11:38,578 RDE.train INFO: compute loss batch 500
+2025-07-10 05:12:03,251 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 05:13:35,298 RDE.train INFO: Epoch[43] Iteration[100/579], loss: 0.5764, bge_loss: 0.2621, tse_loss: 0.3144, Base Lr: 5.10e-06
+2025-07-10 05:15:05,048 RDE.train INFO: Epoch[43] Iteration[200/579], loss: 0.5855, bge_loss: 0.2616, tse_loss: 0.3239, Base Lr: 5.10e-06
+2025-07-10 05:16:34,891 RDE.train INFO: Epoch[43] Iteration[300/579], loss: 0.5743, bge_loss: 0.2595, tse_loss: 0.3147, Base Lr: 5.10e-06
+2025-07-10 05:18:04,629 RDE.train INFO: Epoch[43] Iteration[400/579], loss: 0.5446, bge_loss: 0.2486, tse_loss: 0.2960, Base Lr: 5.10e-06
+2025-07-10 05:19:34,386 RDE.train INFO: Epoch[43] Iteration[500/579], loss: 0.5521, bge_loss: 0.2536, tse_loss: 0.2985, Base Lr: 5.10e-06
+2025-07-10 05:20:44,873 RDE.train INFO: Epoch 43 done. Time per batch: 1.222[s] Speed: 52.4[samples/s]
+2025-07-10 05:20:44,873 RDE.train INFO: Validation Results - Epoch: 43
+2025-07-10 05:21:02,526 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.60 | 77.65 | 85.50 | 44.72 | 23.66 |   218.75  |
+|   TSE-t2i   | 54.35 | 77.55 | 84.90 | 44.80 | 24.63 |   216.8   |
+| BGE+TSE-t2i | 56.70 | 78.90 | 85.95 | 46.48 | 25.79 | 221.54999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 05:21:05,514 RDE.train INFO: compute loss batch 0
+2025-07-10 05:21:37,251 RDE.train INFO: compute loss batch 100
+2025-07-10 05:22:09,045 RDE.train INFO: compute loss batch 200
+2025-07-10 05:22:40,767 RDE.train INFO: compute loss batch 300
+2025-07-10 05:23:12,476 RDE.train INFO: compute loss batch 400
+2025-07-10 05:23:44,141 RDE.train INFO: compute loss batch 500
+2025-07-10 05:24:08,791 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 05:25:40,918 RDE.train INFO: Epoch[44] Iteration[100/579], loss: 0.5744, bge_loss: 0.2703, tse_loss: 0.3041, Base Lr: 4.90e-06
+2025-07-10 05:27:10,833 RDE.train INFO: Epoch[44] Iteration[200/579], loss: 0.5442, bge_loss: 0.2528, tse_loss: 0.2914, Base Lr: 4.90e-06
+2025-07-10 05:28:40,752 RDE.train INFO: Epoch[44] Iteration[300/579], loss: 0.5281, bge_loss: 0.2423, tse_loss: 0.2858, Base Lr: 4.90e-06
+2025-07-10 05:30:10,553 RDE.train INFO: Epoch[44] Iteration[400/579], loss: 0.5279, bge_loss: 0.2445, tse_loss: 0.2834, Base Lr: 4.90e-06
+2025-07-10 05:31:40,441 RDE.train INFO: Epoch[44] Iteration[500/579], loss: 0.5352, bge_loss: 0.2458, tse_loss: 0.2895, Base Lr: 4.90e-06
+2025-07-10 05:32:50,988 RDE.train INFO: Epoch 44 done. Time per batch: 1.223[s] Speed: 52.3[samples/s]
+2025-07-10 05:32:50,989 RDE.train INFO: Validation Results - Epoch: 44
+2025-07-10 05:33:08,523 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 57.25 | 79.15 | 86.25 | 45.62 | 23.74 |   222.65  |
+|   TSE-t2i   | 55.70 | 78.65 | 86.00 | 44.51 | 23.74 | 220.34999 |
+| BGE+TSE-t2i | 58.25 | 79.85 | 86.40 | 46.51 | 25.17 |   224.5   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 05:33:11,701 RDE.train INFO: compute loss batch 0
+2025-07-10 05:33:43,413 RDE.train INFO: compute loss batch 100
+2025-07-10 05:34:15,114 RDE.train INFO: compute loss batch 200
+2025-07-10 05:34:46,875 RDE.train INFO: compute loss batch 300
+2025-07-10 05:35:18,542 RDE.train INFO: compute loss batch 400
+2025-07-10 05:35:50,239 RDE.train INFO: compute loss batch 500
+2025-07-10 05:36:14,988 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 05:37:46,949 RDE.train INFO: Epoch[45] Iteration[100/579], loss: 0.4819, bge_loss: 0.2101, tse_loss: 0.2718, Base Lr: 4.69e-06
+2025-07-10 05:39:16,801 RDE.train INFO: Epoch[45] Iteration[200/579], loss: 0.4787, bge_loss: 0.2085, tse_loss: 0.2702, Base Lr: 4.69e-06
+2025-07-10 05:40:46,820 RDE.train INFO: Epoch[45] Iteration[300/579], loss: 0.5277, bge_loss: 0.2315, tse_loss: 0.2961, Base Lr: 4.69e-06
+2025-07-10 05:42:16,741 RDE.train INFO: Epoch[45] Iteration[400/579], loss: 0.5424, bge_loss: 0.2391, tse_loss: 0.3033, Base Lr: 4.69e-06
+2025-07-10 05:43:46,677 RDE.train INFO: Epoch[45] Iteration[500/579], loss: 0.5420, bge_loss: 0.2406, tse_loss: 0.3014, Base Lr: 4.69e-06
+2025-07-10 05:44:57,246 RDE.train INFO: Epoch 45 done. Time per batch: 1.224[s] Speed: 52.3[samples/s]
+2025-07-10 05:44:57,247 RDE.train INFO: Validation Results - Epoch: 45
+2025-07-10 05:45:14,580 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 55.75 | 77.85 | 85.50 | 44.70 | 23.70 | 219.1  |
+|   TSE-t2i   | 55.60 | 77.85 | 85.30 | 44.60 | 24.23 | 218.75 |
+| BGE+TSE-t2i | 57.55 | 79.55 | 86.50 | 46.30 | 25.62 | 223.6  |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-10 05:45:17,927 RDE.train INFO: compute loss batch 0
+2025-07-10 05:45:49,740 RDE.train INFO: compute loss batch 100
+2025-07-10 05:46:21,517 RDE.train INFO: compute loss batch 200
+2025-07-10 05:46:53,264 RDE.train INFO: compute loss batch 300
+2025-07-10 05:47:25,019 RDE.train INFO: compute loss batch 400
+2025-07-10 05:47:56,689 RDE.train INFO: compute loss batch 500
+2025-07-10 05:48:21,358 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 05:49:53,238 RDE.train INFO: Epoch[46] Iteration[100/579], loss: 0.5249, bge_loss: 0.2342, tse_loss: 0.2906, Base Lr: 4.48e-06
+2025-07-10 05:51:23,087 RDE.train INFO: Epoch[46] Iteration[200/579], loss: 0.5258, bge_loss: 0.2378, tse_loss: 0.2880, Base Lr: 4.48e-06
+2025-07-10 05:52:52,962 RDE.train INFO: Epoch[46] Iteration[300/579], loss: 0.5095, bge_loss: 0.2315, tse_loss: 0.2780, Base Lr: 4.48e-06
+2025-07-10 05:54:22,803 RDE.train INFO: Epoch[46] Iteration[400/579], loss: 0.5270, bge_loss: 0.2413, tse_loss: 0.2857, Base Lr: 4.48e-06
+2025-07-10 05:55:52,559 RDE.train INFO: Epoch[46] Iteration[500/579], loss: 0.5217, bge_loss: 0.2407, tse_loss: 0.2810, Base Lr: 4.48e-06
+2025-07-10 05:57:03,140 RDE.train INFO: Epoch 46 done. Time per batch: 1.224[s] Speed: 52.3[samples/s]
+2025-07-10 05:57:03,140 RDE.train INFO: Validation Results - Epoch: 46
+2025-07-10 05:57:20,751 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.35 | 77.85 | 84.90 | 44.67 | 23.37 | 218.09999 |
+|   TSE-t2i   | 55.70 | 78.05 | 85.35 | 44.81 | 24.27 |   219.1   |
+| BGE+TSE-t2i | 56.75 | 79.75 | 86.00 | 46.18 | 25.41 |   222.5   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 05:57:23,796 RDE.train INFO: compute loss batch 0
+2025-07-10 05:57:55,544 RDE.train INFO: compute loss batch 100
+2025-07-10 05:58:27,399 RDE.train INFO: compute loss batch 200
+2025-07-10 05:58:59,171 RDE.train INFO: compute loss batch 300
+2025-07-10 05:59:30,955 RDE.train INFO: compute loss batch 400
+2025-07-10 06:00:02,773 RDE.train INFO: compute loss batch 500
+2025-07-10 06:00:27,475 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 06:01:59,650 RDE.train INFO: Epoch[47] Iteration[100/579], loss: 0.4880, bge_loss: 0.2300, tse_loss: 0.2581, Base Lr: 4.27e-06
+2025-07-10 06:03:29,542 RDE.train INFO: Epoch[47] Iteration[200/579], loss: 0.5071, bge_loss: 0.2320, tse_loss: 0.2751, Base Lr: 4.27e-06
+2025-07-10 06:04:59,473 RDE.train INFO: Epoch[47] Iteration[300/579], loss: 0.4993, bge_loss: 0.2280, tse_loss: 0.2713, Base Lr: 4.27e-06
+2025-07-10 06:06:29,335 RDE.train INFO: Epoch[47] Iteration[400/579], loss: 0.4877, bge_loss: 0.2251, tse_loss: 0.2626, Base Lr: 4.27e-06
+2025-07-10 06:07:59,185 RDE.train INFO: Epoch[47] Iteration[500/579], loss: 0.4752, bge_loss: 0.2198, tse_loss: 0.2554, Base Lr: 4.27e-06
+2025-07-10 06:09:09,758 RDE.train INFO: Epoch 47 done. Time per batch: 1.224[s] Speed: 52.3[samples/s]
+2025-07-10 06:09:09,759 RDE.train INFO: Validation Results - Epoch: 47
+2025-07-10 06:09:27,328 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 56.30 | 79.15 | 85.30 | 45.07 | 24.24 |   220.75  |
+|   TSE-t2i   | 57.20 | 77.85 | 84.85 | 45.00 | 23.97 |   219.9   |
+| BGE+TSE-t2i | 58.30 | 79.80 | 86.75 | 46.59 | 25.72 | 224.84999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 06:09:30,397 RDE.train INFO: compute loss batch 0
+2025-07-10 06:10:02,045 RDE.train INFO: compute loss batch 100
+2025-07-10 06:10:33,848 RDE.train INFO: compute loss batch 200
+2025-07-10 06:11:05,622 RDE.train INFO: compute loss batch 300
+2025-07-10 06:11:37,348 RDE.train INFO: compute loss batch 400
+2025-07-10 06:12:09,126 RDE.train INFO: compute loss batch 500
+2025-07-10 06:12:33,852 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 06:14:05,866 RDE.train INFO: Epoch[48] Iteration[100/579], loss: 0.4740, bge_loss: 0.2217, tse_loss: 0.2523, Base Lr: 4.06e-06
+2025-07-10 06:15:35,817 RDE.train INFO: Epoch[48] Iteration[200/579], loss: 0.4747, bge_loss: 0.2195, tse_loss: 0.2552, Base Lr: 4.06e-06
+2025-07-10 06:17:05,744 RDE.train INFO: Epoch[48] Iteration[300/579], loss: 0.4819, bge_loss: 0.2237, tse_loss: 0.2582, Base Lr: 4.06e-06
+2025-07-10 06:18:35,635 RDE.train INFO: Epoch[48] Iteration[400/579], loss: 0.4843, bge_loss: 0.2250, tse_loss: 0.2593, Base Lr: 4.06e-06
+2025-07-10 06:20:05,543 RDE.train INFO: Epoch[48] Iteration[500/579], loss: 0.4877, bge_loss: 0.2251, tse_loss: 0.2626, Base Lr: 4.06e-06
+2025-07-10 06:21:16,123 RDE.train INFO: Epoch 48 done. Time per batch: 1.224[s] Speed: 52.3[samples/s]
+2025-07-10 06:21:16,123 RDE.train INFO: Validation Results - Epoch: 48
+2025-07-10 06:21:33,932 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 56.05 | 77.80 | 85.25 | 45.24 | 24.31 |   219.1   |
+|   TSE-t2i   | 57.05 | 78.30 | 85.10 | 45.29 | 24.46 | 220.45001 |
+| BGE+TSE-t2i | 58.40 | 79.45 | 86.20 | 46.93 | 25.74 | 224.04999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 06:21:36,995 RDE.train INFO: compute loss batch 0
+2025-07-10 06:22:08,825 RDE.train INFO: compute loss batch 100
+2025-07-10 06:22:40,642 RDE.train INFO: compute loss batch 200
+2025-07-10 06:23:12,436 RDE.train INFO: compute loss batch 300
+2025-07-10 06:23:44,266 RDE.train INFO: compute loss batch 400
+2025-07-10 06:24:16,062 RDE.train INFO: compute loss batch 500
+2025-07-10 06:24:40,790 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 06:26:12,580 RDE.train INFO: Epoch[49] Iteration[100/579], loss: 0.4282, bge_loss: 0.2071, tse_loss: 0.2211, Base Lr: 3.86e-06
+2025-07-10 06:27:42,579 RDE.train INFO: Epoch[49] Iteration[200/579], loss: 0.4383, bge_loss: 0.2053, tse_loss: 0.2331, Base Lr: 3.86e-06
+2025-07-10 06:29:12,578 RDE.train INFO: Epoch[49] Iteration[300/579], loss: 0.4231, bge_loss: 0.1961, tse_loss: 0.2270, Base Lr: 3.86e-06
+2025-07-10 06:30:42,525 RDE.train INFO: Epoch[49] Iteration[400/579], loss: 0.4516, bge_loss: 0.2111, tse_loss: 0.2405, Base Lr: 3.86e-06
+2025-07-10 06:32:12,563 RDE.train INFO: Epoch[49] Iteration[500/579], loss: 0.4632, bge_loss: 0.2130, tse_loss: 0.2502, Base Lr: 3.86e-06
+2025-07-10 06:33:23,137 RDE.train INFO: Epoch 49 done. Time per batch: 1.225[s] Speed: 52.3[samples/s]
+2025-07-10 06:33:23,137 RDE.train INFO: Validation Results - Epoch: 49
+2025-07-10 06:33:40,728 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.45 | 78.00 | 85.75 | 45.16 | 24.07 |   219.2   |
+|   TSE-t2i   | 56.75 | 76.55 | 84.45 | 45.44 | 24.73 |   217.75  |
+| BGE+TSE-t2i | 58.25 | 78.80 | 85.95 | 47.08 | 26.07 | 222.99998 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 06:33:43,795 RDE.train INFO: compute loss batch 0
+2025-07-10 06:34:15,537 RDE.train INFO: compute loss batch 100
+2025-07-10 06:34:47,265 RDE.train INFO: compute loss batch 200
+2025-07-10 06:35:19,085 RDE.train INFO: compute loss batch 300
+2025-07-10 06:35:50,890 RDE.train INFO: compute loss batch 400
+2025-07-10 06:36:22,679 RDE.train INFO: compute loss batch 500
+2025-07-10 06:36:47,459 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 06:38:19,509 RDE.train INFO: Epoch[50] Iteration[100/579], loss: 0.4902, bge_loss: 0.2198, tse_loss: 0.2703, Base Lr: 3.66e-06
+2025-07-10 06:39:49,443 RDE.train INFO: Epoch[50] Iteration[200/579], loss: 0.4571, bge_loss: 0.2069, tse_loss: 0.2502, Base Lr: 3.66e-06
+2025-07-10 06:41:19,435 RDE.train INFO: Epoch[50] Iteration[300/579], loss: 0.4483, bge_loss: 0.2022, tse_loss: 0.2461, Base Lr: 3.66e-06
+2025-07-10 06:42:49,286 RDE.train INFO: Epoch[50] Iteration[400/579], loss: 0.4442, bge_loss: 0.1988, tse_loss: 0.2453, Base Lr: 3.66e-06
+2025-07-10 06:44:19,666 RDE.train INFO: Epoch[50] Iteration[500/579], loss: 0.4484, bge_loss: 0.2032, tse_loss: 0.2453, Base Lr: 3.66e-06
+2025-07-10 06:45:30,931 RDE.train INFO: Epoch 50 done. Time per batch: 1.226[s] Speed: 52.2[samples/s]
+2025-07-10 06:45:30,931 RDE.train INFO: Validation Results - Epoch: 50
+2025-07-10 06:45:48,453 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 56.20 | 77.50 | 85.65 | 45.00 | 24.24 | 219.35 |
+|   TSE-t2i   | 56.50 | 76.65 | 83.70 | 44.95 | 23.86 | 216.85 |
+| BGE+TSE-t2i | 59.00 | 78.65 | 84.85 | 46.79 | 25.46 | 222.5  |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-10 06:45:51,605 RDE.train INFO: compute loss batch 0
+2025-07-10 06:46:23,527 RDE.train INFO: compute loss batch 100
+2025-07-10 06:46:55,559 RDE.train INFO: compute loss batch 200
+2025-07-10 06:47:27,494 RDE.train INFO: compute loss batch 300
+2025-07-10 06:47:59,441 RDE.train INFO: compute loss batch 400
+2025-07-10 06:48:31,392 RDE.train INFO: compute loss batch 500
+2025-07-10 06:48:56,417 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 06:50:29,122 RDE.train INFO: Epoch[51] Iteration[100/579], loss: 0.3458, bge_loss: 0.1501, tse_loss: 0.1957, Base Lr: 3.45e-06
+2025-07-10 06:51:59,506 RDE.train INFO: Epoch[51] Iteration[200/579], loss: 0.3340, bge_loss: 0.1511, tse_loss: 0.1828, Base Lr: 3.45e-06
+2025-07-10 06:53:29,874 RDE.train INFO: Epoch[51] Iteration[300/579], loss: 0.3876, bge_loss: 0.1767, tse_loss: 0.2109, Base Lr: 3.45e-06
+2025-07-10 06:55:00,275 RDE.train INFO: Epoch[51] Iteration[400/579], loss: 0.3977, bge_loss: 0.1839, tse_loss: 0.2138, Base Lr: 3.45e-06
+2025-07-10 06:56:30,656 RDE.train INFO: Epoch[51] Iteration[500/579], loss: 0.4104, bge_loss: 0.1910, tse_loss: 0.2194, Base Lr: 3.45e-06
+2025-07-10 06:57:41,603 RDE.train INFO: Epoch 51 done. Time per batch: 1.231[s] Speed: 52.0[samples/s]
+2025-07-10 06:57:41,603 RDE.train INFO: Validation Results - Epoch: 51
+2025-07-10 06:57:59,490 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 56.00 | 77.75 | 86.05 | 45.07 | 24.16 | 219.79999 |
+|   TSE-t2i   | 56.00 | 77.60 | 84.35 | 44.55 | 24.03 | 217.95001 |
+| BGE+TSE-t2i | 58.30 | 78.45 | 85.50 | 46.74 | 25.66 |   222.25  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 06:58:02,631 RDE.train INFO: compute loss batch 0
+2025-07-10 06:58:34,508 RDE.train INFO: compute loss batch 100
+2025-07-10 06:59:06,372 RDE.train INFO: compute loss batch 200
+2025-07-10 06:59:38,216 RDE.train INFO: compute loss batch 300
+2025-07-10 07:00:10,177 RDE.train INFO: compute loss batch 400
+2025-07-10 07:00:42,163 RDE.train INFO: compute loss batch 500
+2025-07-10 07:01:07,109 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 07:02:39,732 RDE.train INFO: Epoch[52] Iteration[100/579], loss: 0.3661, bge_loss: 0.1669, tse_loss: 0.1991, Base Lr: 3.26e-06
+2025-07-10 07:04:09,729 RDE.train INFO: Epoch[52] Iteration[200/579], loss: 0.3545, bge_loss: 0.1624, tse_loss: 0.1921, Base Lr: 3.26e-06
+2025-07-10 07:05:39,835 RDE.train INFO: Epoch[52] Iteration[300/579], loss: 0.3709, bge_loss: 0.1685, tse_loss: 0.2024, Base Lr: 3.26e-06
+2025-07-10 07:07:10,190 RDE.train INFO: Epoch[52] Iteration[400/579], loss: 0.3716, bge_loss: 0.1709, tse_loss: 0.2007, Base Lr: 3.26e-06
+2025-07-10 07:08:40,500 RDE.train INFO: Epoch[52] Iteration[500/579], loss: 0.3946, bge_loss: 0.1812, tse_loss: 0.2134, Base Lr: 3.26e-06
+2025-07-10 07:09:51,509 RDE.train INFO: Epoch 52 done. Time per batch: 1.230[s] Speed: 52.1[samples/s]
+2025-07-10 07:09:51,509 RDE.train INFO: Validation Results - Epoch: 52
+2025-07-10 07:10:09,216 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.15 | 77.35 | 84.75 | 44.59 | 24.21 |   217.25  |
+|   TSE-t2i   | 55.80 | 75.65 | 83.25 | 44.53 | 24.24 | 214.70001 |
+| BGE+TSE-t2i | 57.35 | 77.35 | 84.60 | 46.36 | 25.84 | 219.30002 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 07:10:12,312 RDE.train INFO: compute loss batch 0
+2025-07-10 07:10:44,216 RDE.train INFO: compute loss batch 100
+2025-07-10 07:11:16,140 RDE.train INFO: compute loss batch 200
+2025-07-10 07:11:48,146 RDE.train INFO: compute loss batch 300
+2025-07-10 07:12:20,058 RDE.train INFO: compute loss batch 400
+2025-07-10 07:12:51,945 RDE.train INFO: compute loss batch 500
+2025-07-10 07:13:16,831 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 07:14:49,163 RDE.train INFO: Epoch[53] Iteration[100/579], loss: 0.4585, bge_loss: 0.2116, tse_loss: 0.2468, Base Lr: 3.06e-06
+2025-07-10 07:16:19,245 RDE.train INFO: Epoch[53] Iteration[200/579], loss: 0.4220, bge_loss: 0.1985, tse_loss: 0.2235, Base Lr: 3.06e-06
+2025-07-10 07:17:49,434 RDE.train INFO: Epoch[53] Iteration[300/579], loss: 0.4060, bge_loss: 0.1891, tse_loss: 0.2169, Base Lr: 3.06e-06
+2025-07-10 07:19:19,569 RDE.train INFO: Epoch[53] Iteration[400/579], loss: 0.4047, bge_loss: 0.1865, tse_loss: 0.2182, Base Lr: 3.06e-06
+2025-07-10 07:20:49,724 RDE.train INFO: Epoch[53] Iteration[500/579], loss: 0.4117, bge_loss: 0.1894, tse_loss: 0.2223, Base Lr: 3.06e-06
+2025-07-10 07:22:00,656 RDE.train INFO: Epoch 53 done. Time per batch: 1.229[s] Speed: 52.1[samples/s]
+2025-07-10 07:22:00,656 RDE.train INFO: Validation Results - Epoch: 53
+2025-07-10 07:22:18,255 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.85 | 76.05 | 84.40 | 44.24 | 23.66 | 215.29999 |
+|   TSE-t2i   | 55.30 | 75.75 | 84.10 | 44.18 | 23.52 |   215.15  |
+| BGE+TSE-t2i | 57.65 | 78.00 | 85.05 | 46.19 | 25.51 | 220.69998 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 07:22:21,676 RDE.train INFO: compute loss batch 0
+2025-07-10 07:22:53,520 RDE.train INFO: compute loss batch 100
+2025-07-10 07:23:25,328 RDE.train INFO: compute loss batch 200
+2025-07-10 07:23:57,229 RDE.train INFO: compute loss batch 300
+2025-07-10 07:24:29,063 RDE.train INFO: compute loss batch 400
+2025-07-10 07:25:00,918 RDE.train INFO: compute loss batch 500
+2025-07-10 07:25:25,795 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 07:26:58,159 RDE.train INFO: Epoch[54] Iteration[100/579], loss: 0.3753, bge_loss: 0.1695, tse_loss: 0.2058, Base Lr: 2.87e-06
+2025-07-10 07:28:28,224 RDE.train INFO: Epoch[54] Iteration[200/579], loss: 0.3815, bge_loss: 0.1781, tse_loss: 0.2034, Base Lr: 2.87e-06
+2025-07-10 07:29:58,309 RDE.train INFO: Epoch[54] Iteration[300/579], loss: 0.4051, bge_loss: 0.1893, tse_loss: 0.2159, Base Lr: 2.87e-06
+2025-07-10 07:31:28,415 RDE.train INFO: Epoch[54] Iteration[400/579], loss: 0.4073, bge_loss: 0.1909, tse_loss: 0.2163, Base Lr: 2.87e-06
+2025-07-10 07:32:58,494 RDE.train INFO: Epoch[54] Iteration[500/579], loss: 0.4040, bge_loss: 0.1890, tse_loss: 0.2150, Base Lr: 2.87e-06
+2025-07-10 07:34:09,343 RDE.train INFO: Epoch 54 done. Time per batch: 1.228[s] Speed: 52.1[samples/s]
+2025-07-10 07:34:09,344 RDE.train INFO: Validation Results - Epoch: 54
+2025-07-10 07:34:27,171 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 57.40 | 77.50 | 84.45 | 45.33 | 24.74 | 219.34999 |
+|   TSE-t2i   | 56.30 | 76.80 | 83.60 | 45.00 | 24.70 | 216.70001 |
+| BGE+TSE-t2i | 58.90 | 78.25 | 85.10 | 46.84 | 26.30 |   222.25  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 07:34:30,513 RDE.train INFO: compute loss batch 0
+2025-07-10 07:35:02,356 RDE.train INFO: compute loss batch 100
+2025-07-10 07:35:34,214 RDE.train INFO: compute loss batch 200
+2025-07-10 07:36:06,096 RDE.train INFO: compute loss batch 300
+2025-07-10 07:36:37,974 RDE.train INFO: compute loss batch 400
+2025-07-10 07:37:09,810 RDE.train INFO: compute loss batch 500
+2025-07-10 07:37:34,792 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 07:39:07,639 RDE.train INFO: Epoch[55] Iteration[100/579], loss: 0.3935, bge_loss: 0.1765, tse_loss: 0.2170, Base Lr: 2.68e-06
+2025-07-10 07:40:37,827 RDE.train INFO: Epoch[55] Iteration[200/579], loss: 0.3983, bge_loss: 0.1832, tse_loss: 0.2151, Base Lr: 2.68e-06
+2025-07-10 07:42:08,021 RDE.train INFO: Epoch[55] Iteration[300/579], loss: 0.3818, bge_loss: 0.1760, tse_loss: 0.2057, Base Lr: 2.68e-06
+2025-07-10 07:43:38,337 RDE.train INFO: Epoch[55] Iteration[400/579], loss: 0.3816, bge_loss: 0.1769, tse_loss: 0.2047, Base Lr: 2.68e-06
+2025-07-10 07:45:08,712 RDE.train INFO: Epoch[55] Iteration[500/579], loss: 0.3862, bge_loss: 0.1792, tse_loss: 0.2070, Base Lr: 2.68e-06
+2025-07-10 07:46:19,726 RDE.train INFO: Epoch 55 done. Time per batch: 1.230[s] Speed: 52.0[samples/s]
+2025-07-10 07:46:19,727 RDE.train INFO: Validation Results - Epoch: 55
+2025-07-10 07:46:37,747 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 56.25 | 77.90 | 85.30 | 44.85 | 23.84 | 219.44998 |
+|   TSE-t2i   | 54.65 | 76.05 | 83.55 | 44.40 | 24.21 | 214.25002 |
+| BGE+TSE-t2i | 57.20 | 78.30 | 85.05 | 46.28 | 25.73 | 220.54999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 07:46:41,103 RDE.train INFO: compute loss batch 0
+2025-07-10 07:47:13,014 RDE.train INFO: compute loss batch 100
+2025-07-10 07:47:44,862 RDE.train INFO: compute loss batch 200
+2025-07-10 07:48:16,789 RDE.train INFO: compute loss batch 300
+2025-07-10 07:48:48,694 RDE.train INFO: compute loss batch 400
+2025-07-10 07:49:20,594 RDE.train INFO: compute loss batch 500
+2025-07-10 07:49:45,466 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 07:51:17,905 RDE.train INFO: Epoch[56] Iteration[100/579], loss: 0.3103, bge_loss: 0.1482, tse_loss: 0.1621, Base Lr: 2.50e-06
+2025-07-10 07:52:47,955 RDE.train INFO: Epoch[56] Iteration[200/579], loss: 0.3465, bge_loss: 0.1638, tse_loss: 0.1828, Base Lr: 2.50e-06
+2025-07-10 07:54:17,975 RDE.train INFO: Epoch[56] Iteration[300/579], loss: 0.3544, bge_loss: 0.1680, tse_loss: 0.1864, Base Lr: 2.50e-06
+2025-07-10 07:55:48,157 RDE.train INFO: Epoch[56] Iteration[400/579], loss: 0.3644, bge_loss: 0.1717, tse_loss: 0.1927, Base Lr: 2.50e-06
+2025-07-10 07:57:18,347 RDE.train INFO: Epoch[56] Iteration[500/579], loss: 0.3681, bge_loss: 0.1711, tse_loss: 0.1970, Base Lr: 2.50e-06
+2025-07-10 07:58:29,210 RDE.train INFO: Epoch 56 done. Time per batch: 1.229[s] Speed: 52.1[samples/s]
+2025-07-10 07:58:29,211 RDE.train INFO: Validation Results - Epoch: 56
+2025-07-10 07:58:47,409 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.85 | 76.75 | 84.40 | 44.61 | 24.09 |   217.0   |
+|   TSE-t2i   | 54.25 | 76.10 | 83.95 | 43.97 | 24.06 | 214.30002 |
+| BGE+TSE-t2i | 57.15 | 77.35 | 85.25 | 46.08 | 25.58 |   219.75  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 07:58:50,822 RDE.train INFO: compute loss batch 0
+2025-07-10 07:59:22,687 RDE.train INFO: compute loss batch 100
+2025-07-10 07:59:54,573 RDE.train INFO: compute loss batch 200
+2025-07-10 08:00:26,454 RDE.train INFO: compute loss batch 300
+2025-07-10 08:00:58,337 RDE.train INFO: compute loss batch 400
+2025-07-10 08:01:30,294 RDE.train INFO: compute loss batch 500
+2025-07-10 08:01:55,135 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 08:03:27,123 RDE.train INFO: Epoch[57] Iteration[100/579], loss: 0.3070, bge_loss: 0.1443, tse_loss: 0.1626, Base Lr: 2.32e-06
+2025-07-10 08:04:57,319 RDE.train INFO: Epoch[57] Iteration[200/579], loss: 0.3344, bge_loss: 0.1592, tse_loss: 0.1752, Base Lr: 2.32e-06
+2025-07-10 08:06:27,575 RDE.train INFO: Epoch[57] Iteration[300/579], loss: 0.3358, bge_loss: 0.1602, tse_loss: 0.1756, Base Lr: 2.32e-06
+2025-07-10 08:07:57,719 RDE.train INFO: Epoch[57] Iteration[400/579], loss: 0.3528, bge_loss: 0.1691, tse_loss: 0.1836, Base Lr: 2.32e-06
+2025-07-10 08:09:27,912 RDE.train INFO: Epoch[57] Iteration[500/579], loss: 0.3571, bge_loss: 0.1693, tse_loss: 0.1878, Base Lr: 2.32e-06
+2025-07-10 08:10:38,619 RDE.train INFO: Epoch 57 done. Time per batch: 1.228[s] Speed: 52.1[samples/s]
+2025-07-10 08:10:38,620 RDE.train INFO: Validation Results - Epoch: 57
+2025-07-10 08:10:56,504 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.75 | 77.70 | 84.75 | 44.26 | 23.91 | 217.20001 |
+|   TSE-t2i   | 55.60 | 77.25 | 83.95 | 44.18 | 23.78 | 216.80002 |
+| BGE+TSE-t2i | 57.95 | 78.50 | 85.10 | 45.99 | 25.31 | 221.54999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 08:10:59,696 RDE.train INFO: compute loss batch 0
+2025-07-10 08:11:31,530 RDE.train INFO: compute loss batch 100
+2025-07-10 08:12:03,422 RDE.train INFO: compute loss batch 200
+2025-07-10 08:12:35,357 RDE.train INFO: compute loss batch 300
+2025-07-10 08:13:07,256 RDE.train INFO: compute loss batch 400
+2025-07-10 08:13:39,199 RDE.train INFO: compute loss batch 500
+2025-07-10 08:14:04,031 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 08:15:36,300 RDE.train INFO: Epoch[58] Iteration[100/579], loss: 0.3298, bge_loss: 0.1590, tse_loss: 0.1708, Base Lr: 2.15e-06
+2025-07-10 08:17:06,356 RDE.train INFO: Epoch[58] Iteration[200/579], loss: 0.3141, bge_loss: 0.1496, tse_loss: 0.1645, Base Lr: 2.15e-06
+2025-07-10 08:18:36,495 RDE.train INFO: Epoch[58] Iteration[300/579], loss: 0.3103, bge_loss: 0.1456, tse_loss: 0.1647, Base Lr: 2.15e-06
+2025-07-10 08:20:06,742 RDE.train INFO: Epoch[58] Iteration[400/579], loss: 0.3128, bge_loss: 0.1457, tse_loss: 0.1672, Base Lr: 2.15e-06
+2025-07-10 08:21:36,721 RDE.train INFO: Epoch[58] Iteration[500/579], loss: 0.3174, bge_loss: 0.1485, tse_loss: 0.1689, Base Lr: 2.15e-06
+2025-07-10 08:22:47,470 RDE.train INFO: Epoch 58 done. Time per batch: 1.228[s] Speed: 52.1[samples/s]
+2025-07-10 08:22:47,470 RDE.train INFO: Validation Results - Epoch: 58
+2025-07-10 08:23:05,419 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 55.90 | 77.30 | 85.40 | 45.54 | 24.65 | 218.6  |
+|   TSE-t2i   | 55.80 | 77.50 | 84.55 | 45.07 | 24.05 | 217.85 |
+| BGE+TSE-t2i | 57.90 | 78.95 | 85.40 | 46.96 | 26.01 | 222.25 |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-10 08:23:08,813 RDE.train INFO: compute loss batch 0
+2025-07-10 08:23:40,556 RDE.train INFO: compute loss batch 100
+2025-07-10 08:24:12,485 RDE.train INFO: compute loss batch 200
+2025-07-10 08:24:44,342 RDE.train INFO: compute loss batch 300
+2025-07-10 08:25:16,186 RDE.train INFO: compute loss batch 400
+2025-07-10 08:25:48,036 RDE.train INFO: compute loss batch 500
+2025-07-10 08:26:12,865 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 08:27:45,030 RDE.train INFO: Epoch[59] Iteration[100/579], loss: 0.3514, bge_loss: 0.1635, tse_loss: 0.1880, Base Lr: 1.98e-06
+2025-07-10 08:29:15,218 RDE.train INFO: Epoch[59] Iteration[200/579], loss: 0.3236, bge_loss: 0.1488, tse_loss: 0.1748, Base Lr: 1.98e-06
+2025-07-10 08:30:45,284 RDE.train INFO: Epoch[59] Iteration[300/579], loss: 0.3315, bge_loss: 0.1520, tse_loss: 0.1795, Base Lr: 1.98e-06
+2025-07-10 08:32:15,405 RDE.train INFO: Epoch[59] Iteration[400/579], loss: 0.3324, bge_loss: 0.1521, tse_loss: 0.1804, Base Lr: 1.98e-06
+2025-07-10 08:33:45,429 RDE.train INFO: Epoch[59] Iteration[500/579], loss: 0.3292, bge_loss: 0.1521, tse_loss: 0.1771, Base Lr: 1.98e-06
+2025-07-10 08:34:56,115 RDE.train INFO: Epoch 59 done. Time per batch: 1.227[s] Speed: 52.1[samples/s]
+2025-07-10 08:34:56,115 RDE.train INFO: Validation Results - Epoch: 59
+2025-07-10 08:35:13,947 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.85 | 77.85 | 84.10 | 44.83 | 24.62 | 216.79999 |
+|   TSE-t2i   | 55.25 | 76.75 | 84.35 | 44.41 | 24.17 |   216.35  |
+| BGE+TSE-t2i | 56.75 | 78.75 | 84.95 | 46.41 | 26.10 |   220.45  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 08:35:17,006 RDE.train INFO: compute loss batch 0
+2025-07-10 08:35:48,830 RDE.train INFO: compute loss batch 100
+2025-07-10 08:36:20,638 RDE.train INFO: compute loss batch 200
+2025-07-10 08:36:52,463 RDE.train INFO: compute loss batch 300
+2025-07-10 08:37:24,310 RDE.train INFO: compute loss batch 400
+2025-07-10 08:37:56,185 RDE.train INFO: compute loss batch 500
+2025-07-10 08:38:21,001 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 08:39:52,948 RDE.train INFO: Epoch[60] Iteration[100/579], loss: 0.3761, bge_loss: 0.1728, tse_loss: 0.2033, Base Lr: 1.81e-06
+2025-07-10 08:41:22,938 RDE.train INFO: Epoch[60] Iteration[200/579], loss: 0.3345, bge_loss: 0.1565, tse_loss: 0.1781, Base Lr: 1.81e-06
+2025-07-10 08:42:52,928 RDE.train INFO: Epoch[60] Iteration[300/579], loss: 0.3171, bge_loss: 0.1537, tse_loss: 0.1634, Base Lr: 1.81e-06
+2025-07-10 08:44:22,994 RDE.train INFO: Epoch[60] Iteration[400/579], loss: 0.3254, bge_loss: 0.1572, tse_loss: 0.1682, Base Lr: 1.81e-06
+2025-07-10 08:45:53,136 RDE.train INFO: Epoch[60] Iteration[500/579], loss: 0.3269, bge_loss: 0.1566, tse_loss: 0.1703, Base Lr: 1.81e-06
+2025-07-10 08:47:04,082 RDE.train INFO: Epoch 60 done. Time per batch: 1.226[s] Speed: 52.2[samples/s]
+2025-07-10 08:47:04,082 RDE.train INFO: Validation Results - Epoch: 60
+2025-07-10 08:47:23,774 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 56.15 | 77.65 | 84.25 | 45.23 | 24.64 | 218.05 |
+|   TSE-t2i   | 55.70 | 76.80 | 84.90 | 44.86 | 24.51 | 217.4  |
+| BGE+TSE-t2i | 57.45 | 78.45 | 85.10 | 46.74 | 26.24 | 221.0  |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-10 08:47:27,430 RDE.train INFO: compute loss batch 0
+2025-07-10 08:47:59,325 RDE.train INFO: compute loss batch 100
+2025-07-10 08:48:31,165 RDE.train INFO: compute loss batch 200
+2025-07-10 08:49:03,142 RDE.train INFO: compute loss batch 300
+2025-07-10 08:49:35,069 RDE.train INFO: compute loss batch 400
+2025-07-10 08:50:06,964 RDE.train INFO: compute loss batch 500
+2025-07-10 08:50:31,857 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 08:52:04,183 RDE.train INFO: Epoch[61] Iteration[100/579], loss: 0.2644, bge_loss: 0.1229, tse_loss: 0.1415, Base Lr: 1.65e-06
+2025-07-10 08:53:34,377 RDE.train INFO: Epoch[61] Iteration[200/579], loss: 0.2932, bge_loss: 0.1373, tse_loss: 0.1559, Base Lr: 1.65e-06
+2025-07-10 08:55:04,531 RDE.train INFO: Epoch[61] Iteration[300/579], loss: 0.2998, bge_loss: 0.1422, tse_loss: 0.1576, Base Lr: 1.65e-06
+2025-07-10 08:56:34,770 RDE.train INFO: Epoch[61] Iteration[400/579], loss: 0.3138, bge_loss: 0.1489, tse_loss: 0.1649, Base Lr: 1.65e-06
+2025-07-10 08:58:05,067 RDE.train INFO: Epoch[61] Iteration[500/579], loss: 0.3218, bge_loss: 0.1520, tse_loss: 0.1698, Base Lr: 1.65e-06
+2025-07-10 08:59:16,084 RDE.train INFO: Epoch 61 done. Time per batch: 1.230[s] Speed: 52.0[samples/s]
+2025-07-10 08:59:16,084 RDE.train INFO: Validation Results - Epoch: 61
+2025-07-10 08:59:33,984 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.30 | 76.75 | 84.75 | 45.01 | 24.20 | 216.79999 |
+|   TSE-t2i   | 54.80 | 76.95 | 85.00 | 44.86 | 24.38 |   216.75  |
+| BGE+TSE-t2i | 57.00 | 78.25 | 85.80 | 46.69 | 25.85 | 221.04999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 08:59:37,195 RDE.train INFO: compute loss batch 0
+2025-07-10 09:00:09,117 RDE.train INFO: compute loss batch 100
+2025-07-10 09:00:40,906 RDE.train INFO: compute loss batch 200
+2025-07-10 09:01:12,820 RDE.train INFO: compute loss batch 300
+2025-07-10 09:01:44,750 RDE.train INFO: compute loss batch 400
+2025-07-10 09:02:16,613 RDE.train INFO: compute loss batch 500
+2025-07-10 09:02:41,408 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 09:04:13,769 RDE.train INFO: Epoch[62] Iteration[100/579], loss: 0.2612, bge_loss: 0.1265, tse_loss: 0.1347, Base Lr: 1.50e-06
+2025-07-10 09:05:43,886 RDE.train INFO: Epoch[62] Iteration[200/579], loss: 0.2613, bge_loss: 0.1239, tse_loss: 0.1374, Base Lr: 1.50e-06
+2025-07-10 09:07:14,012 RDE.train INFO: Epoch[62] Iteration[300/579], loss: 0.2745, bge_loss: 0.1303, tse_loss: 0.1443, Base Lr: 1.50e-06
+2025-07-10 09:08:44,155 RDE.train INFO: Epoch[62] Iteration[400/579], loss: 0.2701, bge_loss: 0.1254, tse_loss: 0.1447, Base Lr: 1.50e-06
+2025-07-10 09:10:14,195 RDE.train INFO: Epoch[62] Iteration[500/579], loss: 0.2708, bge_loss: 0.1251, tse_loss: 0.1456, Base Lr: 1.50e-06
+2025-07-10 09:11:24,929 RDE.train INFO: Epoch 62 done. Time per batch: 1.228[s] Speed: 52.1[samples/s]
+2025-07-10 09:11:24,929 RDE.train INFO: Validation Results - Epoch: 62
+2025-07-10 09:11:42,647 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.50 | 77.75 | 84.80 | 44.76 | 24.50 | 218.04999 |
+|   TSE-t2i   | 55.40 | 76.60 | 84.90 | 44.76 | 24.19 |   216.9   |
+| BGE+TSE-t2i | 57.80 | 77.95 | 85.00 | 46.63 | 25.90 |   220.75  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 09:11:46,107 RDE.train INFO: compute loss batch 0
+2025-07-10 09:12:17,853 RDE.train INFO: compute loss batch 100
+2025-07-10 09:12:49,682 RDE.train INFO: compute loss batch 200
+2025-07-10 09:13:21,607 RDE.train INFO: compute loss batch 300
+2025-07-10 09:13:53,469 RDE.train INFO: compute loss batch 400
+2025-07-10 09:14:25,320 RDE.train INFO: compute loss batch 500
+2025-07-10 09:14:50,204 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 09:16:22,271 RDE.train INFO: Epoch[63] Iteration[100/579], loss: 0.2590, bge_loss: 0.1160, tse_loss: 0.1430, Base Lr: 1.36e-06
+2025-07-10 09:17:52,276 RDE.train INFO: Epoch[63] Iteration[200/579], loss: 0.2813, bge_loss: 0.1292, tse_loss: 0.1521, Base Lr: 1.36e-06
+2025-07-10 09:19:22,357 RDE.train INFO: Epoch[63] Iteration[300/579], loss: 0.2764, bge_loss: 0.1302, tse_loss: 0.1461, Base Lr: 1.36e-06
+2025-07-10 09:20:52,363 RDE.train INFO: Epoch[63] Iteration[400/579], loss: 0.2666, bge_loss: 0.1264, tse_loss: 0.1402, Base Lr: 1.36e-06
+2025-07-10 09:22:22,608 RDE.train INFO: Epoch[63] Iteration[500/579], loss: 0.2706, bge_loss: 0.1261, tse_loss: 0.1445, Base Lr: 1.36e-06
+2025-07-10 09:23:33,543 RDE.train INFO: Epoch 63 done. Time per batch: 1.228[s] Speed: 52.1[samples/s]
+2025-07-10 09:23:33,543 RDE.train INFO: Validation Results - Epoch: 63
+2025-07-10 09:23:51,409 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.60 | 77.70 | 84.40 | 44.95 | 24.46 | 217.70001 |
+|   TSE-t2i   | 55.25 | 76.65 | 83.50 | 44.67 | 24.30 |   215.4   |
+| BGE+TSE-t2i | 57.65 | 78.45 | 84.75 | 46.64 | 26.05 |   220.85  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 09:23:54,595 RDE.train INFO: compute loss batch 0
+2025-07-10 09:24:26,495 RDE.train INFO: compute loss batch 100
+2025-07-10 09:24:58,345 RDE.train INFO: compute loss batch 200
+2025-07-10 09:25:30,191 RDE.train INFO: compute loss batch 300
+2025-07-10 09:26:02,118 RDE.train INFO: compute loss batch 400
+2025-07-10 09:26:34,052 RDE.train INFO: compute loss batch 500
+2025-07-10 09:26:58,932 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 09:28:31,239 RDE.train INFO: Epoch[64] Iteration[100/579], loss: 0.2585, bge_loss: 0.1141, tse_loss: 0.1444, Base Lr: 1.22e-06
+2025-07-10 09:30:01,449 RDE.train INFO: Epoch[64] Iteration[200/579], loss: 0.2727, bge_loss: 0.1261, tse_loss: 0.1466, Base Lr: 1.22e-06
+2025-07-10 09:31:31,591 RDE.train INFO: Epoch[64] Iteration[300/579], loss: 0.2568, bge_loss: 0.1204, tse_loss: 0.1364, Base Lr: 1.22e-06
+2025-07-10 09:33:01,710 RDE.train INFO: Epoch[64] Iteration[400/579], loss: 0.2796, bge_loss: 0.1319, tse_loss: 0.1477, Base Lr: 1.22e-06
+2025-07-10 09:34:31,711 RDE.train INFO: Epoch[64] Iteration[500/579], loss: 0.2830, bge_loss: 0.1327, tse_loss: 0.1504, Base Lr: 1.22e-06
+2025-07-10 09:35:42,525 RDE.train INFO: Epoch 64 done. Time per batch: 1.228[s] Speed: 52.1[samples/s]
+2025-07-10 09:35:42,525 RDE.train INFO: Validation Results - Epoch: 64
+2025-07-10 09:36:00,528 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 55.65 | 77.75 | 85.00 | 44.55 | 23.95 | 218.4  |
+|   TSE-t2i   | 55.50 | 76.60 | 83.90 | 44.70 | 24.17 | 216.0  |
+| BGE+TSE-t2i | 57.75 | 78.30 | 84.70 | 46.41 | 25.66 | 220.75 |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-10 09:36:03,727 RDE.train INFO: compute loss batch 0
+2025-07-10 09:36:35,573 RDE.train INFO: compute loss batch 100
+2025-07-10 09:37:07,442 RDE.train INFO: compute loss batch 200
+2025-07-10 09:37:39,267 RDE.train INFO: compute loss batch 300
+2025-07-10 09:38:11,123 RDE.train INFO: compute loss batch 400
+2025-07-10 09:38:42,964 RDE.train INFO: compute loss batch 500
+2025-07-10 09:39:07,786 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 09:40:39,886 RDE.train INFO: Epoch[65] Iteration[100/579], loss: 0.2828, bge_loss: 0.1312, tse_loss: 0.1516, Base Lr: 1.08e-06
+2025-07-10 09:42:09,965 RDE.train INFO: Epoch[65] Iteration[200/579], loss: 0.2692, bge_loss: 0.1263, tse_loss: 0.1428, Base Lr: 1.08e-06
+2025-07-10 09:43:40,044 RDE.train INFO: Epoch[65] Iteration[300/579], loss: 0.2803, bge_loss: 0.1323, tse_loss: 0.1480, Base Lr: 1.08e-06
+2025-07-10 09:45:10,092 RDE.train INFO: Epoch[65] Iteration[400/579], loss: 0.2700, bge_loss: 0.1277, tse_loss: 0.1423, Base Lr: 1.08e-06
+2025-07-10 09:46:40,190 RDE.train INFO: Epoch[65] Iteration[500/579], loss: 0.2713, bge_loss: 0.1285, tse_loss: 0.1428, Base Lr: 1.08e-06
+2025-07-10 09:47:50,818 RDE.train INFO: Epoch 65 done. Time per batch: 1.227[s] Speed: 52.2[samples/s]
+2025-07-10 09:47:50,818 RDE.train INFO: Validation Results - Epoch: 65
+2025-07-10 09:48:08,511 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.85 | 77.00 | 84.50 | 44.74 | 24.00 |   216.35  |
+|   TSE-t2i   | 55.75 | 76.95 | 84.05 | 44.93 | 24.41 | 216.75002 |
+| BGE+TSE-t2i | 57.45 | 77.75 | 85.45 | 46.50 | 25.97 |   220.65  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 09:48:11,695 RDE.train INFO: compute loss batch 0
+2025-07-10 09:48:43,592 RDE.train INFO: compute loss batch 100
+2025-07-10 09:49:15,409 RDE.train INFO: compute loss batch 200
+2025-07-10 09:49:47,306 RDE.train INFO: compute loss batch 300
+2025-07-10 09:50:19,117 RDE.train INFO: compute loss batch 400
+2025-07-10 09:50:50,928 RDE.train INFO: compute loss batch 500
+2025-07-10 09:51:15,839 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 09:52:47,889 RDE.train INFO: Epoch[66] Iteration[100/579], loss: 0.2486, bge_loss: 0.1134, tse_loss: 0.1352, Base Lr: 9.55e-07
+2025-07-10 09:54:17,840 RDE.train INFO: Epoch[66] Iteration[200/579], loss: 0.2857, bge_loss: 0.1329, tse_loss: 0.1528, Base Lr: 9.55e-07
+2025-07-10 09:55:47,824 RDE.train INFO: Epoch[66] Iteration[300/579], loss: 0.2909, bge_loss: 0.1361, tse_loss: 0.1548, Base Lr: 9.55e-07
+2025-07-10 09:57:17,874 RDE.train INFO: Epoch[66] Iteration[400/579], loss: 0.2844, bge_loss: 0.1321, tse_loss: 0.1523, Base Lr: 9.55e-07
+2025-07-10 09:58:47,822 RDE.train INFO: Epoch[66] Iteration[500/579], loss: 0.2760, bge_loss: 0.1292, tse_loss: 0.1468, Base Lr: 9.55e-07
+2025-07-10 09:59:58,514 RDE.train INFO: Epoch 66 done. Time per batch: 1.226[s] Speed: 52.2[samples/s]
+2025-07-10 09:59:58,514 RDE.train INFO: Validation Results - Epoch: 66
+2025-07-10 10:00:16,249 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.30 | 77.50 | 84.35 | 44.75 | 24.32 |   217.15  |
+|   TSE-t2i   | 55.40 | 75.95 | 83.60 | 44.78 | 24.77 | 214.95001 |
+| BGE+TSE-t2i | 57.15 | 76.95 | 84.55 | 46.39 | 26.20 | 218.65001 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 10:00:19,225 RDE.train INFO: compute loss batch 0
+2025-07-10 10:00:51,070 RDE.train INFO: compute loss batch 100
+2025-07-10 10:01:22,961 RDE.train INFO: compute loss batch 200
+2025-07-10 10:01:54,841 RDE.train INFO: compute loss batch 300
+2025-07-10 10:02:26,706 RDE.train INFO: compute loss batch 400
+2025-07-10 10:02:58,674 RDE.train INFO: compute loss batch 500
+2025-07-10 10:03:23,518 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 10:04:55,505 RDE.train INFO: Epoch[67] Iteration[100/579], loss: 0.2433, bge_loss: 0.1177, tse_loss: 0.1256, Base Lr: 8.35e-07
+2025-07-10 10:06:25,494 RDE.train INFO: Epoch[67] Iteration[200/579], loss: 0.2792, bge_loss: 0.1354, tse_loss: 0.1438, Base Lr: 8.35e-07
+2025-07-10 10:07:55,528 RDE.train INFO: Epoch[67] Iteration[300/579], loss: 0.2789, bge_loss: 0.1352, tse_loss: 0.1437, Base Lr: 8.35e-07
+2025-07-10 10:09:25,374 RDE.train INFO: Epoch[67] Iteration[400/579], loss: 0.2803, bge_loss: 0.1356, tse_loss: 0.1447, Base Lr: 8.35e-07
+2025-07-10 10:10:55,315 RDE.train INFO: Epoch[67] Iteration[500/579], loss: 0.2677, bge_loss: 0.1295, tse_loss: 0.1382, Base Lr: 8.35e-07
+2025-07-10 10:12:06,050 RDE.train INFO: Epoch 67 done. Time per batch: 1.226[s] Speed: 52.2[samples/s]
+2025-07-10 10:12:06,050 RDE.train INFO: Validation Results - Epoch: 67
+2025-07-10 10:12:23,771 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.40 | 77.55 | 84.95 | 44.88 | 24.23 | 217.90001 |
+|   TSE-t2i   | 55.75 | 76.45 | 83.55 | 44.80 | 24.28 | 215.75002 |
+| BGE+TSE-t2i | 57.75 | 78.10 | 84.65 | 46.57 | 25.76 |   220.5   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 10:12:26,719 RDE.train INFO: compute loss batch 0
+2025-07-10 10:12:58,542 RDE.train INFO: compute loss batch 100
+2025-07-10 10:13:30,334 RDE.train INFO: compute loss batch 200
+2025-07-10 10:14:02,205 RDE.train INFO: compute loss batch 300
+2025-07-10 10:14:34,075 RDE.train INFO: compute loss batch 400
+2025-07-10 10:15:05,869 RDE.train INFO: compute loss batch 500
+2025-07-10 10:15:30,753 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 10:17:02,749 RDE.train INFO: Epoch[68] Iteration[100/579], loss: 0.2764, bge_loss: 0.1354, tse_loss: 0.1409, Base Lr: 7.23e-07
+2025-07-10 10:18:32,691 RDE.train INFO: Epoch[68] Iteration[200/579], loss: 0.2458, bge_loss: 0.1160, tse_loss: 0.1298, Base Lr: 7.23e-07
+2025-07-10 10:20:02,602 RDE.train INFO: Epoch[68] Iteration[300/579], loss: 0.2452, bge_loss: 0.1168, tse_loss: 0.1284, Base Lr: 7.23e-07
+2025-07-10 10:21:32,662 RDE.train INFO: Epoch[68] Iteration[400/579], loss: 0.2483, bge_loss: 0.1171, tse_loss: 0.1312, Base Lr: 7.23e-07
+2025-07-10 10:23:02,639 RDE.train INFO: Epoch[68] Iteration[500/579], loss: 0.2514, bge_loss: 0.1197, tse_loss: 0.1318, Base Lr: 7.23e-07
+2025-07-10 10:24:13,249 RDE.train INFO: Epoch 68 done. Time per batch: 1.225[s] Speed: 52.2[samples/s]
+2025-07-10 10:24:13,249 RDE.train INFO: Validation Results - Epoch: 68
+2025-07-10 10:24:31,359 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 55.45 | 77.10 | 85.00 | 44.78 | 24.32 | 217.55 |
+|   TSE-t2i   | 55.55 | 76.20 | 84.15 | 44.99 | 24.39 | 215.9  |
+| BGE+TSE-t2i | 57.85 | 77.85 | 85.50 | 46.69 | 26.08 | 221.2  |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-10 10:24:34,409 RDE.train INFO: compute loss batch 0
+2025-07-10 10:25:06,239 RDE.train INFO: compute loss batch 100
+2025-07-10 10:25:38,035 RDE.train INFO: compute loss batch 200
+2025-07-10 10:26:09,831 RDE.train INFO: compute loss batch 300
+2025-07-10 10:26:41,636 RDE.train INFO: compute loss batch 400
+2025-07-10 10:27:13,474 RDE.train INFO: compute loss batch 500
+2025-07-10 10:27:38,307 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 10:29:10,306 RDE.train INFO: Epoch[69] Iteration[100/579], loss: 0.2857, bge_loss: 0.1375, tse_loss: 0.1482, Base Lr: 6.18e-07
+2025-07-10 10:30:40,203 RDE.train INFO: Epoch[69] Iteration[200/579], loss: 0.2837, bge_loss: 0.1352, tse_loss: 0.1486, Base Lr: 6.18e-07
+2025-07-10 10:32:10,160 RDE.train INFO: Epoch[69] Iteration[300/579], loss: 0.2712, bge_loss: 0.1271, tse_loss: 0.1441, Base Lr: 6.18e-07
+2025-07-10 10:33:40,077 RDE.train INFO: Epoch[69] Iteration[400/579], loss: 0.2558, bge_loss: 0.1207, tse_loss: 0.1351, Base Lr: 6.18e-07
+2025-07-10 10:35:09,938 RDE.train INFO: Epoch[69] Iteration[500/579], loss: 0.2536, bge_loss: 0.1203, tse_loss: 0.1333, Base Lr: 6.18e-07
+2025-07-10 10:36:20,533 RDE.train INFO: Epoch 69 done. Time per batch: 1.225[s] Speed: 52.3[samples/s]
+2025-07-10 10:36:20,534 RDE.train INFO: Validation Results - Epoch: 69
+2025-07-10 10:36:38,189 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 55.20 | 76.85 | 84.60 | 44.66 | 24.28 |   216.65  |
+|   TSE-t2i   | 54.80 | 75.95 | 83.20 | 44.81 | 24.59 | 213.95001 |
+| BGE+TSE-t2i | 57.40 | 77.25 | 84.90 | 46.53 | 26.13 | 219.54999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 10:36:41,210 RDE.train INFO: compute loss batch 0
+2025-07-10 10:37:13,015 RDE.train INFO: compute loss batch 100
+2025-07-10 10:37:44,928 RDE.train INFO: compute loss batch 200
+2025-07-10 10:38:16,733 RDE.train INFO: compute loss batch 300
+2025-07-10 10:38:48,595 RDE.train INFO: compute loss batch 400
+2025-07-10 10:39:20,367 RDE.train INFO: compute loss batch 500
+2025-07-10 10:39:45,112 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 10:41:17,010 RDE.train INFO: Epoch[70] Iteration[100/579], loss: 0.2132, bge_loss: 0.0975, tse_loss: 0.1157, Base Lr: 5.21e-07
+2025-07-10 10:42:46,934 RDE.train INFO: Epoch[70] Iteration[200/579], loss: 0.2355, bge_loss: 0.1136, tse_loss: 0.1219, Base Lr: 5.21e-07
+2025-07-10 10:44:16,791 RDE.train INFO: Epoch[70] Iteration[300/579], loss: 0.2487, bge_loss: 0.1189, tse_loss: 0.1298, Base Lr: 5.21e-07
+2025-07-10 10:45:46,737 RDE.train INFO: Epoch[70] Iteration[400/579], loss: 0.2560, bge_loss: 0.1222, tse_loss: 0.1339, Base Lr: 5.21e-07
+2025-07-10 10:47:16,675 RDE.train INFO: Epoch[70] Iteration[500/579], loss: 0.2474, bge_loss: 0.1177, tse_loss: 0.1297, Base Lr: 5.21e-07
+2025-07-10 10:48:27,282 RDE.train INFO: Epoch 70 done. Time per batch: 1.225[s] Speed: 52.3[samples/s]
+2025-07-10 10:48:27,282 RDE.train INFO: Validation Results - Epoch: 70
+2025-07-10 10:48:44,958 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.60 | 76.45 | 84.30 | 44.43 | 24.33 |   215.35  |
+|   TSE-t2i   | 54.50 | 75.15 | 83.20 | 44.39 | 24.36 |   212.85  |
+| BGE+TSE-t2i | 57.00 | 77.20 | 84.05 | 46.17 | 25.90 | 218.25002 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 10:48:48,126 RDE.train INFO: compute loss batch 0
+2025-07-10 10:49:19,908 RDE.train INFO: compute loss batch 100
+2025-07-10 10:49:51,784 RDE.train INFO: compute loss batch 200
+2025-07-10 10:50:23,619 RDE.train INFO: compute loss batch 300
+2025-07-10 10:50:55,522 RDE.train INFO: compute loss batch 400
+2025-07-10 10:51:27,329 RDE.train INFO: compute loss batch 500
+2025-07-10 10:51:52,147 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 10:53:24,038 RDE.train INFO: Epoch[71] Iteration[100/579], loss: 0.2563, bge_loss: 0.1227, tse_loss: 0.1335, Base Lr: 4.32e-07
+2025-07-10 10:54:53,976 RDE.train INFO: Epoch[71] Iteration[200/579], loss: 0.2619, bge_loss: 0.1242, tse_loss: 0.1377, Base Lr: 4.32e-07
+2025-07-10 10:56:23,918 RDE.train INFO: Epoch[71] Iteration[300/579], loss: 0.2623, bge_loss: 0.1245, tse_loss: 0.1378, Base Lr: 4.32e-07
+2025-07-10 10:57:53,927 RDE.train INFO: Epoch[71] Iteration[400/579], loss: 0.2542, bge_loss: 0.1219, tse_loss: 0.1323, Base Lr: 4.32e-07
+2025-07-10 10:59:23,967 RDE.train INFO: Epoch[71] Iteration[500/579], loss: 0.2507, bge_loss: 0.1181, tse_loss: 0.1326, Base Lr: 4.32e-07
+2025-07-10 11:00:34,597 RDE.train INFO: Epoch 71 done. Time per batch: 1.225[s] Speed: 52.2[samples/s]
+2025-07-10 11:00:34,597 RDE.train INFO: Validation Results - Epoch: 71
+2025-07-10 11:00:52,277 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.25 | 76.80 | 84.30 | 44.47 | 24.26 |   215.35  |
+|   TSE-t2i   | 54.80 | 75.45 | 83.20 | 44.75 | 24.58 | 213.45001 |
+| BGE+TSE-t2i | 57.35 | 76.80 | 84.45 | 46.42 | 26.00 | 218.59999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 11:00:55,312 RDE.train INFO: compute loss batch 0
+2025-07-10 11:01:27,099 RDE.train INFO: compute loss batch 100
+2025-07-10 11:01:58,870 RDE.train INFO: compute loss batch 200
+2025-07-10 11:02:30,696 RDE.train INFO: compute loss batch 300
+2025-07-10 11:03:02,523 RDE.train INFO: compute loss batch 400
+2025-07-10 11:03:34,354 RDE.train INFO: compute loss batch 500
+2025-07-10 11:03:59,180 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 11:05:31,387 RDE.train INFO: Epoch[72] Iteration[100/579], loss: 0.1925, bge_loss: 0.0923, tse_loss: 0.1002, Base Lr: 3.51e-07
+2025-07-10 11:07:01,291 RDE.train INFO: Epoch[72] Iteration[200/579], loss: 0.2294, bge_loss: 0.1091, tse_loss: 0.1203, Base Lr: 3.51e-07
+2025-07-10 11:08:31,155 RDE.train INFO: Epoch[72] Iteration[300/579], loss: 0.2380, bge_loss: 0.1141, tse_loss: 0.1239, Base Lr: 3.51e-07
+2025-07-10 11:10:01,131 RDE.train INFO: Epoch[72] Iteration[400/579], loss: 0.2455, bge_loss: 0.1176, tse_loss: 0.1279, Base Lr: 3.51e-07
+2025-07-10 11:11:31,148 RDE.train INFO: Epoch[72] Iteration[500/579], loss: 0.2411, bge_loss: 0.1157, tse_loss: 0.1254, Base Lr: 3.51e-07
+2025-07-10 11:12:41,904 RDE.train INFO: Epoch 72 done. Time per batch: 1.225[s] Speed: 52.2[samples/s]
+2025-07-10 11:12:41,904 RDE.train INFO: Validation Results - Epoch: 72
+2025-07-10 11:13:00,121 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.70 | 76.85 | 84.25 | 44.46 | 24.34 |   215.8   |
+|   TSE-t2i   | 54.55 | 75.50 | 83.05 | 44.63 | 24.62 |   213.1   |
+| BGE+TSE-t2i | 56.80 | 77.50 | 84.40 | 46.34 | 26.15 | 218.70001 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 11:13:03,191 RDE.train INFO: compute loss batch 0
+2025-07-10 11:13:35,120 RDE.train INFO: compute loss batch 100
+2025-07-10 11:14:06,996 RDE.train INFO: compute loss batch 200
+2025-07-10 11:14:38,872 RDE.train INFO: compute loss batch 300
+2025-07-10 11:15:10,783 RDE.train INFO: compute loss batch 400
+2025-07-10 11:15:42,652 RDE.train INFO: compute loss batch 500
+2025-07-10 11:16:07,513 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 11:17:39,588 RDE.train INFO: Epoch[73] Iteration[100/579], loss: 0.2767, bge_loss: 0.1326, tse_loss: 0.1441, Base Lr: 2.78e-07
+2025-07-10 11:19:09,639 RDE.train INFO: Epoch[73] Iteration[200/579], loss: 0.2467, bge_loss: 0.1166, tse_loss: 0.1301, Base Lr: 2.78e-07
+2025-07-10 11:20:39,608 RDE.train INFO: Epoch[73] Iteration[300/579], loss: 0.2757, bge_loss: 0.1312, tse_loss: 0.1445, Base Lr: 2.78e-07
+2025-07-10 11:22:09,674 RDE.train INFO: Epoch[73] Iteration[400/579], loss: 0.2706, bge_loss: 0.1295, tse_loss: 0.1411, Base Lr: 2.78e-07
+2025-07-10 11:23:39,847 RDE.train INFO: Epoch[73] Iteration[500/579], loss: 0.2628, bge_loss: 0.1264, tse_loss: 0.1364, Base Lr: 2.78e-07
+2025-07-10 11:24:50,675 RDE.train INFO: Epoch 73 done. Time per batch: 1.227[s] Speed: 52.2[samples/s]
+2025-07-10 11:24:50,675 RDE.train INFO: Validation Results - Epoch: 73
+2025-07-10 11:25:08,403 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.80 | 76.70 | 84.40 | 44.68 | 24.35 |   215.9   |
+|   TSE-t2i   | 54.90 | 75.40 | 83.35 | 44.86 | 24.87 | 213.65001 |
+| BGE+TSE-t2i | 57.10 | 76.95 | 84.70 | 46.54 | 26.28 |   218.75  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 11:25:11,795 RDE.train INFO: compute loss batch 0
+2025-07-10 11:25:43,643 RDE.train INFO: compute loss batch 100
+2025-07-10 11:26:15,452 RDE.train INFO: compute loss batch 200
+2025-07-10 11:26:47,310 RDE.train INFO: compute loss batch 300
+2025-07-10 11:27:19,146 RDE.train INFO: compute loss batch 400
+2025-07-10 11:27:50,990 RDE.train INFO: compute loss batch 500
+2025-07-10 11:28:15,824 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 11:29:47,972 RDE.train INFO: Epoch[74] Iteration[100/579], loss: 0.2643, bge_loss: 0.1295, tse_loss: 0.1348, Base Lr: 2.13e-07
+2025-07-10 11:31:17,822 RDE.train INFO: Epoch[74] Iteration[200/579], loss: 0.2722, bge_loss: 0.1316, tse_loss: 0.1406, Base Lr: 2.13e-07
+2025-07-10 11:32:47,657 RDE.train INFO: Epoch[74] Iteration[300/579], loss: 0.2731, bge_loss: 0.1328, tse_loss: 0.1403, Base Lr: 2.13e-07
+2025-07-10 11:34:17,489 RDE.train INFO: Epoch[74] Iteration[400/579], loss: 0.2515, bge_loss: 0.1207, tse_loss: 0.1308, Base Lr: 2.13e-07
+2025-07-10 11:35:47,414 RDE.train INFO: Epoch[74] Iteration[500/579], loss: 0.2465, bge_loss: 0.1181, tse_loss: 0.1284, Base Lr: 2.13e-07
+2025-07-10 11:36:58,127 RDE.train INFO: Epoch 74 done. Time per batch: 1.226[s] Speed: 52.2[samples/s]
+2025-07-10 11:36:58,127 RDE.train INFO: Validation Results - Epoch: 74
+2025-07-10 11:37:15,802 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.95 | 77.00 | 84.55 | 44.66 | 24.30 |   216.5   |
+|   TSE-t2i   | 55.50 | 75.40 | 83.25 | 44.92 | 24.73 |   214.15  |
+| BGE+TSE-t2i | 57.10 | 76.90 | 84.80 | 46.48 | 26.19 | 218.79999 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 11:37:18,912 RDE.train INFO: compute loss batch 0
+2025-07-10 11:37:50,754 RDE.train INFO: compute loss batch 100
+2025-07-10 11:38:22,567 RDE.train INFO: compute loss batch 200
+2025-07-10 11:38:54,427 RDE.train INFO: compute loss batch 300
+2025-07-10 11:39:26,297 RDE.train INFO: compute loss batch 400
+2025-07-10 11:39:58,153 RDE.train INFO: compute loss batch 500
+2025-07-10 11:40:22,939 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 11:41:55,002 RDE.train INFO: Epoch[75] Iteration[100/579], loss: 0.2246, bge_loss: 0.1056, tse_loss: 0.1190, Base Lr: 1.57e-07
+2025-07-10 11:43:25,006 RDE.train INFO: Epoch[75] Iteration[200/579], loss: 0.2376, bge_loss: 0.1158, tse_loss: 0.1218, Base Lr: 1.57e-07
+2025-07-10 11:44:55,009 RDE.train INFO: Epoch[75] Iteration[300/579], loss: 0.2417, bge_loss: 0.1171, tse_loss: 0.1246, Base Lr: 1.57e-07
+2025-07-10 11:46:24,941 RDE.train INFO: Epoch[75] Iteration[400/579], loss: 0.2352, bge_loss: 0.1142, tse_loss: 0.1210, Base Lr: 1.57e-07
+2025-07-10 11:47:54,883 RDE.train INFO: Epoch[75] Iteration[500/579], loss: 0.2312, bge_loss: 0.1121, tse_loss: 0.1191, Base Lr: 1.57e-07
+2025-07-10 11:49:05,436 RDE.train INFO: Epoch 75 done. Time per batch: 1.225[s] Speed: 52.2[samples/s]
+2025-07-10 11:49:05,436 RDE.train INFO: Validation Results - Epoch: 75
+2025-07-10 11:49:23,262 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 54.80 | 76.90 | 84.25 | 44.70 | 24.34 | 215.95 |
+|   TSE-t2i   | 54.75 | 75.45 | 83.05 | 44.86 | 24.77 | 213.25 |
+| BGE+TSE-t2i | 57.30 | 76.70 | 84.55 | 46.53 | 26.11 | 218.55 |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-10 11:49:26,319 RDE.train INFO: compute loss batch 0
+2025-07-10 11:49:58,232 RDE.train INFO: compute loss batch 100
+2025-07-10 11:50:30,125 RDE.train INFO: compute loss batch 200
+2025-07-10 11:51:01,993 RDE.train INFO: compute loss batch 300
+2025-07-10 11:51:33,769 RDE.train INFO: compute loss batch 400
+2025-07-10 11:52:05,578 RDE.train INFO: compute loss batch 500
+2025-07-10 11:52:30,422 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 11:54:02,419 RDE.train INFO: Epoch[76] Iteration[100/579], loss: 0.2440, bge_loss: 0.1183, tse_loss: 0.1256, Base Lr: 1.09e-07
+2025-07-10 11:55:32,263 RDE.train INFO: Epoch[76] Iteration[200/579], loss: 0.2477, bge_loss: 0.1195, tse_loss: 0.1282, Base Lr: 1.09e-07
+2025-07-10 11:57:02,062 RDE.train INFO: Epoch[76] Iteration[300/579], loss: 0.2610, bge_loss: 0.1266, tse_loss: 0.1344, Base Lr: 1.09e-07
+2025-07-10 11:58:31,936 RDE.train INFO: Epoch[76] Iteration[400/579], loss: 0.2590, bge_loss: 0.1256, tse_loss: 0.1334, Base Lr: 1.09e-07
+2025-07-10 12:00:01,803 RDE.train INFO: Epoch[76] Iteration[500/579], loss: 0.2568, bge_loss: 0.1266, tse_loss: 0.1302, Base Lr: 1.09e-07
+2025-07-10 12:01:12,439 RDE.train INFO: Epoch 76 done. Time per batch: 1.225[s] Speed: 52.3[samples/s]
+2025-07-10 12:01:12,440 RDE.train INFO: Validation Results - Epoch: 76
+2025-07-10 12:01:30,087 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 54.70 | 76.80 | 84.40 | 44.69 | 24.37 | 215.9  |
+|   TSE-t2i   | 55.05 | 75.65 | 83.05 | 44.91 | 24.71 | 213.75 |
+| BGE+TSE-t2i | 57.45 | 77.00 | 84.65 | 46.54 | 26.20 | 219.1  |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-10 12:01:33,195 RDE.train INFO: compute loss batch 0
+2025-07-10 12:02:05,005 RDE.train INFO: compute loss batch 100
+2025-07-10 12:02:36,777 RDE.train INFO: compute loss batch 200
+2025-07-10 12:03:08,719 RDE.train INFO: compute loss batch 300
+2025-07-10 12:03:40,603 RDE.train INFO: compute loss batch 400
+2025-07-10 12:04:12,402 RDE.train INFO: compute loss batch 500
+2025-07-10 12:04:37,213 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 12:06:09,070 RDE.train INFO: Epoch[77] Iteration[100/579], loss: 0.2452, bge_loss: 0.1213, tse_loss: 0.1238, Base Lr: 7.00e-08
+2025-07-10 12:07:38,983 RDE.train INFO: Epoch[77] Iteration[200/579], loss: 0.2716, bge_loss: 0.1344, tse_loss: 0.1372, Base Lr: 7.00e-08
+2025-07-10 12:09:08,977 RDE.train INFO: Epoch[77] Iteration[300/579], loss: 0.2518, bge_loss: 0.1244, tse_loss: 0.1274, Base Lr: 7.00e-08
+2025-07-10 12:10:38,815 RDE.train INFO: Epoch[77] Iteration[400/579], loss: 0.2399, bge_loss: 0.1158, tse_loss: 0.1241, Base Lr: 7.00e-08
+2025-07-10 12:12:08,728 RDE.train INFO: Epoch[77] Iteration[500/579], loss: 0.2510, bge_loss: 0.1212, tse_loss: 0.1298, Base Lr: 7.00e-08
+2025-07-10 12:13:19,313 RDE.train INFO: Epoch 77 done. Time per batch: 1.225[s] Speed: 52.3[samples/s]
+2025-07-10 12:13:19,314 RDE.train INFO: Validation Results - Epoch: 77
+2025-07-10 12:13:37,077 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.40 | 76.50 | 84.30 | 44.64 | 24.37 |   215.2   |
+|   TSE-t2i   | 55.00 | 75.25 | 82.95 | 44.85 | 24.66 | 213.20001 |
+| BGE+TSE-t2i | 57.40 | 76.70 | 84.60 | 46.52 | 26.16 | 218.70001 |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 12:13:40,195 RDE.train INFO: compute loss batch 0
+2025-07-10 12:14:12,022 RDE.train INFO: compute loss batch 100
+2025-07-10 12:14:43,831 RDE.train INFO: compute loss batch 200
+2025-07-10 12:15:15,642 RDE.train INFO: compute loss batch 300
+2025-07-10 12:15:47,461 RDE.train INFO: compute loss batch 400
+2025-07-10 12:16:19,303 RDE.train INFO: compute loss batch 500
+2025-07-10 12:16:44,092 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 12:18:16,080 RDE.train INFO: Epoch[78] Iteration[100/579], loss: 0.2281, bge_loss: 0.1089, tse_loss: 0.1192, Base Lr: 3.94e-08
+2025-07-10 12:19:46,056 RDE.train INFO: Epoch[78] Iteration[200/579], loss: 0.2463, bge_loss: 0.1131, tse_loss: 0.1332, Base Lr: 3.94e-08
+2025-07-10 12:21:15,957 RDE.train INFO: Epoch[78] Iteration[300/579], loss: 0.2403, bge_loss: 0.1141, tse_loss: 0.1262, Base Lr: 3.94e-08
+2025-07-10 12:22:45,856 RDE.train INFO: Epoch[78] Iteration[400/579], loss: 0.2469, bge_loss: 0.1174, tse_loss: 0.1295, Base Lr: 3.94e-08
+2025-07-10 12:24:15,710 RDE.train INFO: Epoch[78] Iteration[500/579], loss: 0.2441, bge_loss: 0.1169, tse_loss: 0.1272, Base Lr: 3.94e-08
+2025-07-10 12:25:26,310 RDE.train INFO: Epoch 78 done. Time per batch: 1.225[s] Speed: 52.3[samples/s]
+2025-07-10 12:25:26,310 RDE.train INFO: Validation Results - Epoch: 78
+2025-07-10 12:25:44,231 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+--------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |  rSum  |
++-------------+-------+-------+-------+-------+-------+--------+
+|   BGE-t2i   | 54.40 | 76.45 | 84.20 | 44.63 | 24.36 | 215.05 |
+|   TSE-t2i   | 54.80 | 75.45 | 83.00 | 44.80 | 24.78 | 213.25 |
+| BGE+TSE-t2i | 57.20 | 77.05 | 84.60 | 46.48 | 26.19 | 218.85 |
++-------------+-------+-------+-------+-------+-------+--------+
+2025-07-10 12:25:47,430 RDE.train INFO: compute loss batch 0
+2025-07-10 12:26:19,262 RDE.train INFO: compute loss batch 100
+2025-07-10 12:26:51,087 RDE.train INFO: compute loss batch 200
+2025-07-10 12:27:22,921 RDE.train INFO: compute loss batch 300
+2025-07-10 12:27:54,672 RDE.train INFO: compute loss batch 400
+2025-07-10 12:28:26,436 RDE.train INFO: compute loss batch 500
+2025-07-10 12:28:51,226 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 12:30:23,315 RDE.train INFO: Epoch[79] Iteration[100/579], loss: 0.2095, bge_loss: 0.1057, tse_loss: 0.1038, Base Lr: 1.75e-08
+2025-07-10 12:31:53,234 RDE.train INFO: Epoch[79] Iteration[200/579], loss: 0.2133, bge_loss: 0.1067, tse_loss: 0.1066, Base Lr: 1.75e-08
+2025-07-10 12:33:23,129 RDE.train INFO: Epoch[79] Iteration[300/579], loss: 0.2296, bge_loss: 0.1107, tse_loss: 0.1190, Base Lr: 1.75e-08
+2025-07-10 12:34:52,960 RDE.train INFO: Epoch[79] Iteration[400/579], loss: 0.2310, bge_loss: 0.1114, tse_loss: 0.1196, Base Lr: 1.75e-08
+2025-07-10 12:36:22,873 RDE.train INFO: Epoch[79] Iteration[500/579], loss: 0.2228, bge_loss: 0.1101, tse_loss: 0.1127, Base Lr: 1.75e-08
+2025-07-10 12:37:33,513 RDE.train INFO: Epoch 79 done. Time per batch: 1.225[s] Speed: 52.3[samples/s]
+2025-07-10 12:37:33,514 RDE.train INFO: Validation Results - Epoch: 79
+2025-07-10 12:37:51,136 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.40 | 76.45 | 84.15 | 44.64 | 24.38 |   215.0   |
+|   TSE-t2i   | 55.15 | 75.45 | 82.95 | 44.80 | 24.73 | 213.55002 |
+| BGE+TSE-t2i | 56.90 | 76.75 | 84.60 | 46.46 | 26.19 |   218.25  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 12:37:54,336 RDE.train INFO: compute loss batch 0
+2025-07-10 12:38:26,118 RDE.train INFO: compute loss batch 100
+2025-07-10 12:38:57,929 RDE.train INFO: compute loss batch 200
+2025-07-10 12:39:29,789 RDE.train INFO: compute loss batch 300
+2025-07-10 12:40:01,575 RDE.train INFO: compute loss batch 400
+2025-07-10 12:40:33,360 RDE.train INFO: compute loss batch 500
+2025-07-10 12:40:58,122 RDE.train INFO: 
+Fitting GMM ...
+2025-07-10 12:42:30,203 RDE.train INFO: Epoch[80] Iteration[100/579], loss: 0.2546, bge_loss: 0.1251, tse_loss: 0.1295, Base Lr: 4.39e-09
+2025-07-10 12:44:00,042 RDE.train INFO: Epoch[80] Iteration[200/579], loss: 0.2451, bge_loss: 0.1214, tse_loss: 0.1237, Base Lr: 4.39e-09
+2025-07-10 12:45:29,961 RDE.train INFO: Epoch[80] Iteration[300/579], loss: 0.2454, bge_loss: 0.1179, tse_loss: 0.1275, Base Lr: 4.39e-09
+2025-07-10 12:46:59,810 RDE.train INFO: Epoch[80] Iteration[400/579], loss: 0.2294, bge_loss: 0.1117, tse_loss: 0.1177, Base Lr: 4.39e-09
+2025-07-10 12:48:29,819 RDE.train INFO: Epoch[80] Iteration[500/579], loss: 0.2305, bge_loss: 0.1117, tse_loss: 0.1188, Base Lr: 4.39e-09
+2025-07-10 12:49:40,507 RDE.train INFO: Epoch 80 done. Time per batch: 1.225[s] Speed: 52.3[samples/s]
+2025-07-10 12:49:40,508 RDE.train INFO: Validation Results - Epoch: 80
+2025-07-10 12:49:58,320 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.40 | 76.50 | 84.15 | 44.64 | 24.38 | 215.04999 |
+|   TSE-t2i   | 54.95 | 75.60 | 82.90 | 44.85 | 24.77 | 213.44998 |
+| BGE+TSE-t2i | 56.90 | 76.90 | 84.75 | 46.44 | 26.18 |   218.55  |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 12:49:58,427 RDE.train INFO: best R1: 61.599998474121094 at epoch 3
+2025-07-10 12:50:02,489 RDE INFO: ===================>start test
+2025-07-10 12:50:02,737 RDE.dataset INFO: => RSTPReid Images and Captions are loaded
+2025-07-10 12:50:02,737 RDE.dataset INFO: RSTPReid Dataset statistics:
+2025-07-10 12:50:02,738 RDE.dataset INFO: 
++--------+------+--------+----------+
+| subset | ids  | images | captions |
++--------+------+--------+----------+
+| train  | 3701 | 18505  |  37010   |
+|  test  | 200  |  1000  |   2000   |
+|  val   | 200  |  1000  |   2000   |
++--------+------+--------+----------+
+2025-07-10 12:50:15,055 RDE.test INFO: Enter inferencing
+2025-07-10 12:50:37,283 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 58.90 | 80.25 | 87.70 | 45.39 | 23.44 | 226.84999 |
+|   TSE-t2i   | 56.35 | 79.75 | 87.50 | 45.16 | 24.46 |   223.6   |
+| BGE+TSE-t2i | 61.60 | 82.00 | 88.50 | 47.71 | 25.68 |   232.1   |
++-------------+-------+-------+-------+-------+-------+-----------+
+2025-07-10 12:50:43,643 RDE.test INFO: Enter inferencing
+2025-07-10 12:51:05,653 RDE.eval INFO: 
++-------------+-------+-------+-------+-------+-------+-----------+
+|     task    |   R1  |   R5  |  R10  |  mAP  |  mINP |    rSum   |
++-------------+-------+-------+-------+-------+-------+-----------+
+|   BGE-t2i   | 54.40 | 76.50 | 84.15 | 44.64 | 24.38 | 215.04999 |
+|   TSE-t2i   | 54.95 | 75.60 | 82.90 | 44.85 | 24.77 | 213.44998 |
+| BGE+TSE-t2i | 56.90 | 76.90 | 84.75 | 46.44 | 26.18 |   218.55  |
++-------------+-------+-------+-------+-------+-------+-----------+
